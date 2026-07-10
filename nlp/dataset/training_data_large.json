@@ -1,0 +1,3015 @@
+[
+  {
+    "text": "What did user root do last 24 hours?",
+    "intent": "incident_investigation",
+    "entities": {
+      "TIME_RANGE": "last 24 hours",
+      "USER_ACCOUNT": "root"
+    }
+  },
+  {
+    "text": "Any authentication attempts last 24 hours?",
+    "intent": "search_logs",
+    "entities": {
+      "TIME_RANGE": "last 24 hours",
+      "EVENT_TYPE": "authentication attempts"
+    }
+  },
+  {
+    "text": "Export the authentication attempts dashboard for yesterday",
+    "intent": "generate_report",
+    "entities": {
+      "TIME_RANGE": "yesterday",
+      "EVENT_TYPE": "authentication attempts"
+    }
+  },
+  {
+    "text": "Did that IP trigger any medium alerts this month?",
+    "intent": "incident_investigation",
+    "entities": {
+      "TIME_RANGE": "this month",
+      "SEVERITY": "medium",
+      "SOURCE_IP": "that IP"
+    }
+  },
+  {
+    "text": "What happened past 15 minutes regarding suspicious logins?",
+    "intent": "search_logs",
+    "entities": {
+      "TIME_RANGE": "past 15 minutes",
+      "EVENT_TYPE": "suspicious logins"
+    }
+  },
+  {
+    "text": "Show suspicious logins yesterday",
+    "intent": "search_logs",
+    "entities": {
+      "TIME_RANGE": "yesterday",
+      "EVENT_TYPE": "suspicious logins"
+    }
+  },
+  {
+    "text": "What is the total count of high alerts past 15 minutes",
+    "intent": "count_aggregate",
+    "entities": {
+      "TIME_RANGE": "past 15 minutes",
+      "SEVERITY": "high"
+    }
+  },
+  {
+    "text": "Check for Path Traversal signatures last night",
+    "intent": "web_attack_analysis",
+    "entities": {
+      "ATTACK_TYPE": "Path Traversal",
+      "TIME_RANGE": "last night"
+    }
+  },
+  {
+    "text": "Compile a report on SQLi for this week",
+    "intent": "generate_report",
+    "entities": {
+      "ATTACK_TYPE": "SQLi",
+      "TIME_RANGE": "this week"
+    }
+  },
+  {
+    "text": "Find Path Traversal activity yesterday",
+    "intent": "web_attack_analysis",
+    "entities": {
+      "ATTACK_TYPE": "Path Traversal",
+      "TIME_RANGE": "yesterday"
+    }
+  },
+  {
+    "text": "Show failed logins yesterday",
+    "intent": "search_logs",
+    "entities": {
+      "TIME_RANGE": "yesterday",
+      "EVENT_TYPE": "failed logins"
+    }
+  },
+  {
+    "text": "Compile a report on Phishing for yesterday",
+    "intent": "generate_report",
+    "entities": {
+      "ATTACK_TYPE": "Phishing",
+      "TIME_RANGE": "yesterday"
+    }
+  },
+  {
+    "text": "Any XSS attacks this week",
+    "intent": "web_attack_analysis",
+    "entities": {
+      "ATTACK_TYPE": "XSS",
+      "TIME_RANGE": "this week"
+    }
+  },
+  {
+    "text": "How many Brute Force attacks happened today",
+    "intent": "count_aggregate",
+    "entities": {
+      "ATTACK_TYPE": "Brute Force",
+      "TIME_RANGE": "today"
+    }
+  },
+  {
+    "text": "Find Phishing activity this week",
+    "intent": "web_attack_analysis",
+    "entities": {
+      "ATTACK_TYPE": "Phishing",
+      "TIME_RANGE": "this week"
+    }
+  },
+  {
+    "text": "Did that IP trigger any low alerts in the last hour?",
+    "intent": "incident_investigation",
+    "entities": {
+      "TIME_RANGE": "in the last hour",
+      "SEVERITY": "low",
+      "SOURCE_IP": "that IP"
+    }
+  },
+  {
+    "text": "Show privilege escalations this week",
+    "intent": "search_logs",
+    "entities": {
+      "TIME_RANGE": "this week",
+      "EVENT_TYPE": "privilege escalations"
+    }
+  },
+  {
+    "text": "Did we get any Phishing alerts past 15 minutes?",
+    "intent": "web_attack_analysis",
+    "entities": {
+      "ATTACK_TYPE": "Phishing",
+      "TIME_RANGE": "past 15 minutes"
+    }
+  },
+  {
+    "text": "What is the total count of high alerts in the last hour",
+    "intent": "count_aggregate",
+    "entities": {
+      "TIME_RANGE": "in the last hour",
+      "SEVERITY": "high"
+    }
+  },
+  {
+    "text": "Any lateral movement this week?",
+    "intent": "search_logs",
+    "entities": {
+      "TIME_RANGE": "this week",
+      "EVENT_TYPE": "lateral movement"
+    }
+  },
+  {
+    "text": "Give me a yesterday privilege escalations summary",
+    "intent": "generate_report",
+    "entities": {
+      "TIME_RANGE": "yesterday",
+      "EVENT_TYPE": "privilege escalations"
+    }
+  },
+  {
+    "text": "What did user system do last 24 hours?",
+    "intent": "incident_investigation",
+    "entities": {
+      "TIME_RANGE": "last 24 hours",
+      "USER_ACCOUNT": "system"
+    }
+  },
+  {
+    "text": "Export the malware detections dashboard for yesterday",
+    "intent": "generate_report",
+    "entities": {
+      "TIME_RANGE": "yesterday",
+      "EVENT_TYPE": "malware detections"
+    }
+  },
+  {
+    "text": "Show all requests from 192.168.1.10 past 15 minutes",
+    "intent": "incident_investigation",
+    "entities": {
+      "TIME_RANGE": "past 15 minutes",
+      "SOURCE_IP": "192.168.1.10"
+    }
+  },
+  {
+    "text": "What did user system do this month?",
+    "intent": "incident_investigation",
+    "entities": {
+      "TIME_RANGE": "this month",
+      "USER_ACCOUNT": "system"
+    }
+  },
+  {
+    "text": "How many Brute Force attacks happened yesterday",
+    "intent": "count_aggregate",
+    "entities": {
+      "ATTACK_TYPE": "Brute Force",
+      "TIME_RANGE": "yesterday"
+    }
+  },
+  {
+    "text": "Pull logs for CSRF exploits yesterday",
+    "intent": "web_attack_analysis",
+    "entities": {
+      "ATTACK_TYPE": "CSRF",
+      "TIME_RANGE": "yesterday"
+    }
+  },
+  {
+    "text": "What happened this week regarding failed logins?",
+    "intent": "search_logs",
+    "entities": {
+      "TIME_RANGE": "this week",
+      "EVENT_TYPE": "failed logins"
+    }
+  },
+  {
+    "text": "Find SQLi activity last 24 hours",
+    "intent": "web_attack_analysis",
+    "entities": {
+      "ATTACK_TYPE": "SQLi",
+      "TIME_RANGE": "last 24 hours"
+    }
+  },
+  {
+    "text": "What privilege escalations occurred past 15 minutes",
+    "intent": "search_logs",
+    "entities": {
+      "TIME_RANGE": "past 15 minutes",
+      "EVENT_TYPE": "privilege escalations"
+    }
+  },
+  {
+    "text": "Any lateral movement this month?",
+    "intent": "search_logs",
+    "entities": {
+      "TIME_RANGE": "this month",
+      "EVENT_TYPE": "lateral movement"
+    }
+  },
+  {
+    "text": "Show lateral movement this month",
+    "intent": "search_logs",
+    "entities": {
+      "TIME_RANGE": "this month",
+      "EVENT_TYPE": "lateral movement"
+    }
+  },
+  {
+    "text": "Trace all activity for system today",
+    "intent": "incident_investigation",
+    "entities": {
+      "TIME_RANGE": "today",
+      "USER_ACCOUNT": "system"
+    }
+  },
+  {
+    "text": "Give me a last night failed logins summary",
+    "intent": "generate_report",
+    "entities": {
+      "TIME_RANGE": "last night",
+      "EVENT_TYPE": "failed logins"
+    }
+  },
+  {
+    "text": "What did user admin do this week?",
+    "intent": "incident_investigation",
+    "entities": {
+      "TIME_RANGE": "this week",
+      "USER_ACCOUNT": "admin"
+    }
+  },
+  {
+    "text": "What happened in the last hour regarding authentication attempts?",
+    "intent": "search_logs",
+    "entities": {
+      "TIME_RANGE": "in the last hour",
+      "EVENT_TYPE": "authentication attempts"
+    }
+  },
+  {
+    "text": "Pull logs for Brute Force exploits yesterday",
+    "intent": "web_attack_analysis",
+    "entities": {
+      "ATTACK_TYPE": "Brute Force",
+      "TIME_RANGE": "yesterday"
+    }
+  },
+  {
+    "text": "Help me investigate this incident",
+    "intent": "clarify_needed",
+    "entities": {}
+  },
+  {
+    "text": "How many IDOR attacks happened last night",
+    "intent": "count_aggregate",
+    "entities": {
+      "ATTACK_TYPE": "IDOR",
+      "TIME_RANGE": "last night"
+    }
+  },
+  {
+    "text": "Show only high alerts",
+    "intent": "filter_followup",
+    "entities": {
+      "SEVERITY": "high"
+    }
+  },
+  {
+    "text": "Generate security summary for last night",
+    "intent": "generate_report",
+    "entities": {
+      "TIME_RANGE": "last night"
+    }
+  },
+  {
+    "text": "Only show attempts from 172.16.0.50",
+    "intent": "filter_followup",
+    "entities": {
+      "SOURCE_IP": "172.16.0.50"
+    }
+  },
+  {
+    "text": "Compile a report on XSS for this month",
+    "intent": "generate_report",
+    "entities": {
+      "ATTACK_TYPE": "XSS",
+      "TIME_RANGE": "this month"
+    }
+  },
+  {
+    "text": "Trace all activity for unknown users today",
+    "intent": "incident_investigation",
+    "entities": {
+      "TIME_RANGE": "today",
+      "USER_ACCOUNT": "unknown users"
+    }
+  },
+  {
+    "text": "Show me Brute Force attempts today",
+    "intent": "web_attack_analysis",
+    "entities": {
+      "ATTACK_TYPE": "Brute Force",
+      "TIME_RANGE": "today"
+    }
+  },
+  {
+    "text": "Total number of lateral movement today",
+    "intent": "count_aggregate",
+    "entities": {
+      "TIME_RANGE": "today",
+      "EVENT_TYPE": "lateral movement"
+    }
+  },
+  {
+    "text": "Show all requests from 172.16.0.50 yesterday",
+    "intent": "incident_investigation",
+    "entities": {
+      "TIME_RANGE": "yesterday",
+      "SOURCE_IP": "172.16.0.50"
+    }
+  },
+  {
+    "text": "Generate a summary of attacks past 15 minutes",
+    "intent": "generate_report",
+    "entities": {
+      "TIME_RANGE": "past 15 minutes"
+    }
+  },
+  {
+    "text": "Create a today attack report with charts",
+    "intent": "generate_report",
+    "entities": {
+      "TIME_RANGE": "today"
+    }
+  },
+  {
+    "text": "Give me the numbers for privilege escalations this week",
+    "intent": "count_aggregate",
+    "entities": {
+      "TIME_RANGE": "this week",
+      "EVENT_TYPE": "privilege escalations"
+    }
+  },
+  {
+    "text": "Show full network flow for 192.168.1.10 last 24 hours",
+    "intent": "incident_investigation",
+    "entities": {
+      "TIME_RANGE": "last 24 hours",
+      "SOURCE_IP": "192.168.1.10"
+    }
+  },
+  {
+    "text": "Filter by high severity",
+    "intent": "filter_followup",
+    "entities": {
+      "SEVERITY": "high"
+    }
+  },
+  {
+    "text": "Compile a report on Brute Force for last 24 hours",
+    "intent": "generate_report",
+    "entities": {
+      "ATTACK_TYPE": "Brute Force",
+      "TIME_RANGE": "last 24 hours"
+    }
+  },
+  {
+    "text": "Pull all failed logins from this week",
+    "intent": "search_logs",
+    "entities": {
+      "TIME_RANGE": "this week",
+      "EVENT_TYPE": "failed logins"
+    }
+  },
+  {
+    "text": "Compile a report on DDoS for this week",
+    "intent": "generate_report",
+    "entities": {
+      "ATTACK_TYPE": "DDoS",
+      "TIME_RANGE": "this week"
+    }
+  },
+  {
+    "text": "Exclude IP 172.16.0.50",
+    "intent": "filter_followup",
+    "entities": {
+      "SOURCE_IP": "172.16.0.50"
+    }
+  },
+  {
+    "text": "Give me the numbers for suspicious logins last night",
+    "intent": "count_aggregate",
+    "entities": {
+      "TIME_RANGE": "last night",
+      "EVENT_TYPE": "suspicious logins"
+    }
+  },
+  {
+    "text": "Compile a report on SQLi for in the last hour",
+    "intent": "generate_report",
+    "entities": {
+      "ATTACK_TYPE": "SQLi",
+      "TIME_RANGE": "in the last hour"
+    }
+  },
+  {
+    "text": "Did 192.168.1.10 trigger any low alerts this month?",
+    "intent": "incident_investigation",
+    "entities": {
+      "TIME_RANGE": "this month",
+      "SEVERITY": "low",
+      "SOURCE_IP": "192.168.1.10"
+    }
+  },
+  {
+    "text": "I dont understand what to look for",
+    "intent": "clarify_needed",
+    "entities": {}
+  },
+  {
+    "text": "What did user system do this week?",
+    "intent": "incident_investigation",
+    "entities": {
+      "TIME_RANGE": "this week",
+      "USER_ACCOUNT": "system"
+    }
+  },
+  {
+    "text": "Show failed logins last 24 hours",
+    "intent": "search_logs",
+    "entities": {
+      "TIME_RANGE": "last 24 hours",
+      "EVENT_TYPE": "failed logins"
+    }
+  },
+  {
+    "text": "Give me a yesterday lateral movement summary",
+    "intent": "generate_report",
+    "entities": {
+      "TIME_RANGE": "yesterday",
+      "EVENT_TYPE": "lateral movement"
+    }
+  },
+  {
+    "text": "Filter only from IP 192.168.1.10",
+    "intent": "filter_followup",
+    "entities": {
+      "SOURCE_IP": "192.168.1.10"
+    }
+  },
+  {
+    "text": "Show all requests from 10.0.0.5 yesterday",
+    "intent": "incident_investigation",
+    "entities": {
+      "TIME_RANGE": "yesterday",
+      "SOURCE_IP": "10.0.0.5"
+    }
+  },
+  {
+    "text": "What lateral movement occurred this week",
+    "intent": "search_logs",
+    "entities": {
+      "TIME_RANGE": "this week",
+      "EVENT_TYPE": "lateral movement"
+    }
+  },
+  {
+    "text": "Find IDOR activity this month",
+    "intent": "web_attack_analysis",
+    "entities": {
+      "ATTACK_TYPE": "IDOR",
+      "TIME_RANGE": "this month"
+    }
+  },
+  {
+    "text": "Total number of lateral movement yesterday",
+    "intent": "count_aggregate",
+    "entities": {
+      "TIME_RANGE": "yesterday",
+      "EVENT_TYPE": "lateral movement"
+    }
+  },
+  {
+    "text": "Pull logs for RCE exploits last night",
+    "intent": "web_attack_analysis",
+    "entities": {
+      "ATTACK_TYPE": "RCE",
+      "TIME_RANGE": "last night"
+    }
+  },
+  {
+    "text": "Pull all privilege escalations from this month",
+    "intent": "search_logs",
+    "entities": {
+      "TIME_RANGE": "this month",
+      "EVENT_TYPE": "privilege escalations"
+    }
+  },
+  {
+    "text": "Show full network flow for 192.168.1.10 yesterday",
+    "intent": "incident_investigation",
+    "entities": {
+      "TIME_RANGE": "yesterday",
+      "SOURCE_IP": "192.168.1.10"
+    }
+  },
+  {
+    "text": "Show me SQLi attempts this week",
+    "intent": "web_attack_analysis",
+    "entities": {
+      "ATTACK_TYPE": "SQLi",
+      "TIME_RANGE": "this week"
+    }
+  },
+  {
+    "text": "Find XSS activity last night",
+    "intent": "web_attack_analysis",
+    "entities": {
+      "ATTACK_TYPE": "XSS",
+      "TIME_RANGE": "last night"
+    }
+  },
+  {
+    "text": "Generate a summary of attacks last 24 hours",
+    "intent": "generate_report",
+    "entities": {
+      "TIME_RANGE": "last 24 hours"
+    }
+  },
+  {
+    "text": "What failed logins occurred last 24 hours",
+    "intent": "search_logs",
+    "entities": {
+      "TIME_RANGE": "last 24 hours",
+      "EVENT_TYPE": "failed logins"
+    }
+  },
+  {
+    "text": "Trace all activity for system yesterday",
+    "intent": "incident_investigation",
+    "entities": {
+      "TIME_RANGE": "yesterday",
+      "USER_ACCOUNT": "system"
+    }
+  },
+  {
+    "text": "Did we get any RCE alerts in the last hour?",
+    "intent": "web_attack_analysis",
+    "entities": {
+      "ATTACK_TYPE": "RCE",
+      "TIME_RANGE": "in the last hour"
+    }
+  },
+  {
+    "text": "What is the total count of low alerts last night",
+    "intent": "count_aggregate",
+    "entities": {
+      "TIME_RANGE": "last night",
+      "SEVERITY": "low"
+    }
+  },
+  {
+    "text": "Did we get any SQLi alerts last night?",
+    "intent": "web_attack_analysis",
+    "entities": {
+      "ATTACK_TYPE": "SQLi",
+      "TIME_RANGE": "last night"
+    }
+  },
+  {
+    "text": "Export the suspicious logins dashboard for last night",
+    "intent": "generate_report",
+    "entities": {
+      "TIME_RANGE": "last night",
+      "EVENT_TYPE": "suspicious logins"
+    }
+  },
+  {
+    "text": "Total number of privilege escalations today",
+    "intent": "count_aggregate",
+    "entities": {
+      "TIME_RANGE": "today",
+      "EVENT_TYPE": "privilege escalations"
+    }
+  },
+  {
+    "text": "Pull logs for Phishing exploits yesterday",
+    "intent": "web_attack_analysis",
+    "entities": {
+      "ATTACK_TYPE": "Phishing",
+      "TIME_RANGE": "yesterday"
+    }
+  },
+  {
+    "text": "Just show me logs for user unknown users",
+    "intent": "filter_followup",
+    "entities": {
+      "USER_ACCOUNT": "unknown users"
+    }
+  },
+  {
+    "text": "Export the privilege escalations dashboard for last night",
+    "intent": "generate_report",
+    "entities": {
+      "TIME_RANGE": "last night",
+      "EVENT_TYPE": "privilege escalations"
+    }
+  },
+  {
+    "text": "Show all requests from that IP past 15 minutes",
+    "intent": "incident_investigation",
+    "entities": {
+      "TIME_RANGE": "past 15 minutes",
+      "SOURCE_IP": "that IP"
+    }
+  },
+  {
+    "text": "Show all requests from this IP this week",
+    "intent": "incident_investigation",
+    "entities": {
+      "TIME_RANGE": "this week",
+      "SOURCE_IP": "this IP"
+    }
+  },
+  {
+    "text": "Did we get any XSS alerts last night?",
+    "intent": "web_attack_analysis",
+    "entities": {
+      "ATTACK_TYPE": "XSS",
+      "TIME_RANGE": "last night"
+    }
+  },
+  {
+    "text": "How many XSS attacks happened yesterday",
+    "intent": "count_aggregate",
+    "entities": {
+      "ATTACK_TYPE": "XSS",
+      "TIME_RANGE": "yesterday"
+    }
+  },
+  {
+    "text": "Show me XSS attempts in the last hour",
+    "intent": "web_attack_analysis",
+    "entities": {
+      "ATTACK_TYPE": "XSS",
+      "TIME_RANGE": "in the last hour"
+    }
+  },
+  {
+    "text": "Give me the numbers for failed logins last 24 hours",
+    "intent": "count_aggregate",
+    "entities": {
+      "TIME_RANGE": "last 24 hours",
+      "EVENT_TYPE": "failed logins"
+    }
+  },
+  {
+    "text": "Count total Phishing attempts this week",
+    "intent": "count_aggregate",
+    "entities": {
+      "ATTACK_TYPE": "Phishing",
+      "TIME_RANGE": "this week"
+    }
+  },
+  {
+    "text": "Generate a summary of attacks this week",
+    "intent": "generate_report",
+    "entities": {
+      "TIME_RANGE": "this week"
+    }
+  },
+  {
+    "text": "Show me XSS attempts past 15 minutes",
+    "intent": "web_attack_analysis",
+    "entities": {
+      "ATTACK_TYPE": "XSS",
+      "TIME_RANGE": "past 15 minutes"
+    }
+  },
+  {
+    "text": "Can you help me find something suspicious",
+    "intent": "clarify_needed",
+    "entities": {}
+  },
+  {
+    "text": "Count total SQLi attempts this week",
+    "intent": "count_aggregate",
+    "entities": {
+      "ATTACK_TYPE": "SQLi",
+      "TIME_RANGE": "this week"
+    }
+  },
+  {
+    "text": "Generate a summary of attacks today",
+    "intent": "generate_report",
+    "entities": {
+      "TIME_RANGE": "today"
+    }
+  },
+  {
+    "text": "Show malware detections last night",
+    "intent": "search_logs",
+    "entities": {
+      "TIME_RANGE": "last night",
+      "EVENT_TYPE": "malware detections"
+    }
+  },
+  {
+    "text": "Give me the numbers for lateral movement this month",
+    "intent": "count_aggregate",
+    "entities": {
+      "TIME_RANGE": "this month",
+      "EVENT_TYPE": "lateral movement"
+    }
+  },
+  {
+    "text": "Compile a report on Brute Force for yesterday",
+    "intent": "generate_report",
+    "entities": {
+      "ATTACK_TYPE": "Brute Force",
+      "TIME_RANGE": "yesterday"
+    }
+  },
+  {
+    "text": "Any privilege escalations today?",
+    "intent": "search_logs",
+    "entities": {
+      "TIME_RANGE": "today",
+      "EVENT_TYPE": "privilege escalations"
+    }
+  },
+  {
+    "text": "What is the total count of medium alerts past 15 minutes",
+    "intent": "count_aggregate",
+    "entities": {
+      "TIME_RANGE": "past 15 minutes",
+      "SEVERITY": "medium"
+    }
+  },
+  {
+    "text": "Filter only from IP this IP",
+    "intent": "filter_followup",
+    "entities": {
+      "SOURCE_IP": "this IP"
+    }
+  },
+  {
+    "text": "Did we get any RCE alerts this month?",
+    "intent": "web_attack_analysis",
+    "entities": {
+      "ATTACK_TYPE": "RCE",
+      "TIME_RANGE": "this month"
+    }
+  },
+  {
+    "text": "Did the external IP trigger any high alerts in the last hour?",
+    "intent": "incident_investigation",
+    "entities": {
+      "TIME_RANGE": "in the last hour",
+      "SEVERITY": "high",
+      "SOURCE_IP": "the external IP"
+    }
+  },
+  {
+    "text": "Compile a report on Path Traversal for this month",
+    "intent": "generate_report",
+    "entities": {
+      "ATTACK_TYPE": "Path Traversal",
+      "TIME_RANGE": "this month"
+    }
+  },
+  {
+    "text": "Compile a report on RCE for last 24 hours",
+    "intent": "generate_report",
+    "entities": {
+      "ATTACK_TYPE": "RCE",
+      "TIME_RANGE": "last 24 hours"
+    }
+  },
+  {
+    "text": "Give me a yesterday authentication attempts summary",
+    "intent": "generate_report",
+    "entities": {
+      "TIME_RANGE": "yesterday",
+      "EVENT_TYPE": "authentication attempts"
+    }
+  },
+  {
+    "text": "Pull all privilege escalations from past 15 minutes",
+    "intent": "search_logs",
+    "entities": {
+      "TIME_RANGE": "past 15 minutes",
+      "EVENT_TYPE": "privilege escalations"
+    }
+  },
+  {
+    "text": "What should I check first",
+    "intent": "clarify_needed",
+    "entities": {}
+  },
+  {
+    "text": "How many DDoS attacks happened yesterday",
+    "intent": "count_aggregate",
+    "entities": {
+      "ATTACK_TYPE": "DDoS",
+      "TIME_RANGE": "yesterday"
+    }
+  },
+  {
+    "text": "Compile a report on XSS for last 24 hours",
+    "intent": "generate_report",
+    "entities": {
+      "ATTACK_TYPE": "XSS",
+      "TIME_RANGE": "last 24 hours"
+    }
+  },
+  {
+    "text": "Exclude IP the external IP",
+    "intent": "filter_followup",
+    "entities": {
+      "SOURCE_IP": "the external IP"
+    }
+  },
+  {
+    "text": "Show me SQLi attempts last 24 hours",
+    "intent": "web_attack_analysis",
+    "entities": {
+      "ATTACK_TYPE": "SQLi",
+      "TIME_RANGE": "last 24 hours"
+    }
+  },
+  {
+    "text": "Did we get any Phishing alerts this week?",
+    "intent": "web_attack_analysis",
+    "entities": {
+      "ATTACK_TYPE": "Phishing",
+      "TIME_RANGE": "this week"
+    }
+  },
+  {
+    "text": "What did user unknown users do in the last hour?",
+    "intent": "incident_investigation",
+    "entities": {
+      "TIME_RANGE": "in the last hour",
+      "USER_ACCOUNT": "unknown users"
+    }
+  },
+  {
+    "text": "Trace all activity for unknown users last 24 hours",
+    "intent": "incident_investigation",
+    "entities": {
+      "TIME_RANGE": "last 24 hours",
+      "USER_ACCOUNT": "unknown users"
+    }
+  },
+  {
+    "text": "Compile a report on DDoS for this month",
+    "intent": "generate_report",
+    "entities": {
+      "ATTACK_TYPE": "DDoS",
+      "TIME_RANGE": "this month"
+    }
+  },
+  {
+    "text": "Trace all activity for root today",
+    "intent": "incident_investigation",
+    "entities": {
+      "TIME_RANGE": "today",
+      "USER_ACCOUNT": "root"
+    }
+  },
+  {
+    "text": "What kind of queries can I ask",
+    "intent": "clarify_needed",
+    "entities": {}
+  },
+  {
+    "text": "Pull logs for SQLi exploits this week",
+    "intent": "web_attack_analysis",
+    "entities": {
+      "ATTACK_TYPE": "SQLi",
+      "TIME_RANGE": "this week"
+    }
+  },
+  {
+    "text": "Any Brute Force attacks today",
+    "intent": "web_attack_analysis",
+    "entities": {
+      "ATTACK_TYPE": "Brute Force",
+      "TIME_RANGE": "today"
+    }
+  },
+  {
+    "text": "Pull logs for Path Traversal exploits today",
+    "intent": "web_attack_analysis",
+    "entities": {
+      "ATTACK_TYPE": "Path Traversal",
+      "TIME_RANGE": "today"
+    }
+  },
+  {
+    "text": "Any lateral movement past 15 minutes?",
+    "intent": "search_logs",
+    "entities": {
+      "TIME_RANGE": "past 15 minutes",
+      "EVENT_TYPE": "lateral movement"
+    }
+  },
+  {
+    "text": "Did we get any XSS alerts yesterday?",
+    "intent": "web_attack_analysis",
+    "entities": {
+      "ATTACK_TYPE": "XSS",
+      "TIME_RANGE": "yesterday"
+    }
+  },
+  {
+    "text": "Any IDOR attacks past 15 minutes",
+    "intent": "web_attack_analysis",
+    "entities": {
+      "ATTACK_TYPE": "IDOR",
+      "TIME_RANGE": "past 15 minutes"
+    }
+  },
+  {
+    "text": "Can you explain what a brute force attack is",
+    "intent": "clarify_needed",
+    "entities": {}
+  },
+  {
+    "text": "Any failed logins last 24 hours?",
+    "intent": "search_logs",
+    "entities": {
+      "TIME_RANGE": "last 24 hours",
+      "EVENT_TYPE": "failed logins"
+    }
+  },
+  {
+    "text": "Show full network flow for the external IP last 24 hours",
+    "intent": "incident_investigation",
+    "entities": {
+      "TIME_RANGE": "last 24 hours",
+      "SOURCE_IP": "the external IP"
+    }
+  },
+  {
+    "text": "Give me the numbers for suspicious logins last 24 hours",
+    "intent": "count_aggregate",
+    "entities": {
+      "TIME_RANGE": "last 24 hours",
+      "EVENT_TYPE": "suspicious logins"
+    }
+  },
+  {
+    "text": "What happened last 24 hours regarding privilege escalations?",
+    "intent": "search_logs",
+    "entities": {
+      "TIME_RANGE": "last 24 hours",
+      "EVENT_TYPE": "privilege escalations"
+    }
+  },
+  {
+    "text": "What is the total count of critical alerts this week",
+    "intent": "count_aggregate",
+    "entities": {
+      "TIME_RANGE": "this week",
+      "SEVERITY": "critical"
+    }
+  },
+  {
+    "text": "Compile a report on CSRF for yesterday",
+    "intent": "generate_report",
+    "entities": {
+      "ATTACK_TYPE": "CSRF",
+      "TIME_RANGE": "yesterday"
+    }
+  },
+  {
+    "text": "Narrow it down to low events",
+    "intent": "filter_followup",
+    "entities": {
+      "SEVERITY": "low"
+    }
+  },
+  {
+    "text": "Generate security summary for today",
+    "intent": "generate_report",
+    "entities": {
+      "TIME_RANGE": "today"
+    }
+  },
+  {
+    "text": "What is the total count of low alerts in the last hour",
+    "intent": "count_aggregate",
+    "entities": {
+      "TIME_RANGE": "in the last hour",
+      "SEVERITY": "low"
+    }
+  },
+  {
+    "text": "Show me IDOR attempts yesterday",
+    "intent": "web_attack_analysis",
+    "entities": {
+      "ATTACK_TYPE": "IDOR",
+      "TIME_RANGE": "yesterday"
+    }
+  },
+  {
+    "text": "Show only critical alerts",
+    "intent": "filter_followup",
+    "entities": {
+      "SEVERITY": "critical"
+    }
+  },
+  {
+    "text": "Pull logs for CSRF exploits last 24 hours",
+    "intent": "web_attack_analysis",
+    "entities": {
+      "ATTACK_TYPE": "CSRF",
+      "TIME_RANGE": "last 24 hours"
+    }
+  },
+  {
+    "text": "Any Path Traversal attacks past 15 minutes",
+    "intent": "web_attack_analysis",
+    "entities": {
+      "ATTACK_TYPE": "Path Traversal",
+      "TIME_RANGE": "past 15 minutes"
+    }
+  },
+  {
+    "text": "Show only medium alerts",
+    "intent": "filter_followup",
+    "entities": {
+      "SEVERITY": "medium"
+    }
+  },
+  {
+    "text": "What did user system do today?",
+    "intent": "incident_investigation",
+    "entities": {
+      "TIME_RANGE": "today",
+      "USER_ACCOUNT": "system"
+    }
+  },
+  {
+    "text": "What authentication attempts occurred last night",
+    "intent": "search_logs",
+    "entities": {
+      "TIME_RANGE": "last night",
+      "EVENT_TYPE": "authentication attempts"
+    }
+  },
+  {
+    "text": "Trace all activity for admin yesterday",
+    "intent": "incident_investigation",
+    "entities": {
+      "TIME_RANGE": "yesterday",
+      "USER_ACCOUNT": "admin"
+    }
+  },
+  {
+    "text": "Show full network flow for that IP this week",
+    "intent": "incident_investigation",
+    "entities": {
+      "TIME_RANGE": "this week",
+      "SOURCE_IP": "that IP"
+    }
+  },
+  {
+    "text": "Give me a today privilege escalations summary",
+    "intent": "generate_report",
+    "entities": {
+      "TIME_RANGE": "today",
+      "EVENT_TYPE": "privilege escalations"
+    }
+  },
+  {
+    "text": "Give me the numbers for malware detections this month",
+    "intent": "count_aggregate",
+    "entities": {
+      "TIME_RANGE": "this month",
+      "EVENT_TYPE": "malware detections"
+    }
+  },
+  {
+    "text": "What privilege escalations occurred in the last hour",
+    "intent": "search_logs",
+    "entities": {
+      "TIME_RANGE": "in the last hour",
+      "EVENT_TYPE": "privilege escalations"
+    }
+  },
+  {
+    "text": "Did this IP trigger any high alerts past 15 minutes?",
+    "intent": "incident_investigation",
+    "entities": {
+      "TIME_RANGE": "past 15 minutes",
+      "SEVERITY": "high",
+      "SOURCE_IP": "this IP"
+    }
+  },
+  {
+    "text": "Did we get any Phishing alerts last 24 hours?",
+    "intent": "web_attack_analysis",
+    "entities": {
+      "ATTACK_TYPE": "Phishing",
+      "TIME_RANGE": "last 24 hours"
+    }
+  },
+  {
+    "text": "What is the total count of low alerts yesterday",
+    "intent": "count_aggregate",
+    "entities": {
+      "TIME_RANGE": "yesterday",
+      "SEVERITY": "low"
+    }
+  },
+  {
+    "text": "Show suspicious logins last night",
+    "intent": "search_logs",
+    "entities": {
+      "TIME_RANGE": "last night",
+      "EVENT_TYPE": "suspicious logins"
+    }
+  },
+  {
+    "text": "Any CSRF attacks this month",
+    "intent": "web_attack_analysis",
+    "entities": {
+      "ATTACK_TYPE": "CSRF",
+      "TIME_RANGE": "this month"
+    }
+  },
+  {
+    "text": "Check for CSRF signatures this week",
+    "intent": "web_attack_analysis",
+    "entities": {
+      "ATTACK_TYPE": "CSRF",
+      "TIME_RANGE": "this week"
+    }
+  },
+  {
+    "text": "Export the malware detections dashboard for this month",
+    "intent": "generate_report",
+    "entities": {
+      "TIME_RANGE": "this month",
+      "EVENT_TYPE": "malware detections"
+    }
+  },
+  {
+    "text": "What failed logins occurred today",
+    "intent": "search_logs",
+    "entities": {
+      "TIME_RANGE": "today",
+      "EVENT_TYPE": "failed logins"
+    }
+  },
+  {
+    "text": "Only show attempts from the external IP",
+    "intent": "filter_followup",
+    "entities": {
+      "SOURCE_IP": "the external IP"
+    }
+  },
+  {
+    "text": "Show malware detections this week",
+    "intent": "search_logs",
+    "entities": {
+      "TIME_RANGE": "this week",
+      "EVENT_TYPE": "malware detections"
+    }
+  },
+  {
+    "text": "Did we get any Phishing alerts in the last hour?",
+    "intent": "web_attack_analysis",
+    "entities": {
+      "ATTACK_TYPE": "Phishing",
+      "TIME_RANGE": "in the last hour"
+    }
+  },
+  {
+    "text": "Generate security summary for last 24 hours",
+    "intent": "generate_report",
+    "entities": {
+      "TIME_RANGE": "last 24 hours"
+    }
+  },
+  {
+    "text": "Give me the numbers for failed logins yesterday",
+    "intent": "count_aggregate",
+    "entities": {
+      "TIME_RANGE": "yesterday",
+      "EVENT_TYPE": "failed logins"
+    }
+  },
+  {
+    "text": "Find DDoS activity past 15 minutes",
+    "intent": "web_attack_analysis",
+    "entities": {
+      "ATTACK_TYPE": "DDoS",
+      "TIME_RANGE": "past 15 minutes"
+    }
+  },
+  {
+    "text": "Generate security summary for this month",
+    "intent": "generate_report",
+    "entities": {
+      "TIME_RANGE": "this month"
+    }
+  },
+  {
+    "text": "Filter only from IP 172.16.0.50",
+    "intent": "filter_followup",
+    "entities": {
+      "SOURCE_IP": "172.16.0.50"
+    }
+  },
+  {
+    "text": "Export the privilege escalations dashboard for past 15 minutes",
+    "intent": "generate_report",
+    "entities": {
+      "TIME_RANGE": "past 15 minutes",
+      "EVENT_TYPE": "privilege escalations"
+    }
+  },
+  {
+    "text": "Did we get any XSS alerts this month?",
+    "intent": "web_attack_analysis",
+    "entities": {
+      "ATTACK_TYPE": "XSS",
+      "TIME_RANGE": "this month"
+    }
+  },
+  {
+    "text": "Any RCE attacks this week",
+    "intent": "web_attack_analysis",
+    "entities": {
+      "ATTACK_TYPE": "RCE",
+      "TIME_RANGE": "this week"
+    }
+  },
+  {
+    "text": "How many Phishing attacks happened last 24 hours",
+    "intent": "count_aggregate",
+    "entities": {
+      "ATTACK_TYPE": "Phishing",
+      "TIME_RANGE": "last 24 hours"
+    }
+  },
+  {
+    "text": "Narrow it down to medium events",
+    "intent": "filter_followup",
+    "entities": {
+      "SEVERITY": "medium"
+    }
+  },
+  {
+    "text": "Only show attempts from this IP",
+    "intent": "filter_followup",
+    "entities": {
+      "SOURCE_IP": "this IP"
+    }
+  },
+  {
+    "text": "Find DDoS activity this week",
+    "intent": "web_attack_analysis",
+    "entities": {
+      "ATTACK_TYPE": "DDoS",
+      "TIME_RANGE": "this week"
+    }
+  },
+  {
+    "text": "Any Path Traversal attacks yesterday",
+    "intent": "web_attack_analysis",
+    "entities": {
+      "ATTACK_TYPE": "Path Traversal",
+      "TIME_RANGE": "yesterday"
+    }
+  },
+  {
+    "text": "Narrow it down to high events",
+    "intent": "filter_followup",
+    "entities": {
+      "SEVERITY": "high"
+    }
+  },
+  {
+    "text": "Count total Brute Force attempts this week",
+    "intent": "count_aggregate",
+    "entities": {
+      "ATTACK_TYPE": "Brute Force",
+      "TIME_RANGE": "this week"
+    }
+  },
+  {
+    "text": "Just show me logs for user the service account",
+    "intent": "filter_followup",
+    "entities": {
+      "USER_ACCOUNT": "the service account"
+    }
+  },
+  {
+    "text": "Trace all activity for the service account past 15 minutes",
+    "intent": "incident_investigation",
+    "entities": {
+      "TIME_RANGE": "past 15 minutes",
+      "USER_ACCOUNT": "the service account"
+    }
+  },
+  {
+    "text": "Export the failed logins dashboard for past 15 minutes",
+    "intent": "generate_report",
+    "entities": {
+      "TIME_RANGE": "past 15 minutes",
+      "EVENT_TYPE": "failed logins"
+    }
+  },
+  {
+    "text": "How many Phishing attacks happened today",
+    "intent": "count_aggregate",
+    "entities": {
+      "ATTACK_TYPE": "Phishing",
+      "TIME_RANGE": "today"
+    }
+  },
+  {
+    "text": "Did 192.168.1.10 trigger any medium alerts today?",
+    "intent": "incident_investigation",
+    "entities": {
+      "TIME_RANGE": "today",
+      "SEVERITY": "medium",
+      "SOURCE_IP": "192.168.1.10"
+    }
+  },
+  {
+    "text": "Show only low alerts",
+    "intent": "filter_followup",
+    "entities": {
+      "SEVERITY": "low"
+    }
+  },
+  {
+    "text": "Pull logs for XSS exploits past 15 minutes",
+    "intent": "web_attack_analysis",
+    "entities": {
+      "ATTACK_TYPE": "XSS",
+      "TIME_RANGE": "past 15 minutes"
+    }
+  },
+  {
+    "text": "Give me a last night suspicious logins summary",
+    "intent": "generate_report",
+    "entities": {
+      "TIME_RANGE": "last night",
+      "EVENT_TYPE": "suspicious logins"
+    }
+  },
+  {
+    "text": "I need guidance on where to start",
+    "intent": "clarify_needed",
+    "entities": {}
+  },
+  {
+    "text": "Generate security summary for this week",
+    "intent": "generate_report",
+    "entities": {
+      "TIME_RANGE": "this week"
+    }
+  },
+  {
+    "text": "Exclude IP 192.168.1.10",
+    "intent": "filter_followup",
+    "entities": {
+      "SOURCE_IP": "192.168.1.10"
+    }
+  },
+  {
+    "text": "How many RCE attacks happened this week",
+    "intent": "count_aggregate",
+    "entities": {
+      "ATTACK_TYPE": "RCE",
+      "TIME_RANGE": "this week"
+    }
+  },
+  {
+    "text": "Show me DDoS attempts last night",
+    "intent": "web_attack_analysis",
+    "entities": {
+      "ATTACK_TYPE": "DDoS",
+      "TIME_RANGE": "last night"
+    }
+  },
+  {
+    "text": "What did user root do this week?",
+    "intent": "incident_investigation",
+    "entities": {
+      "TIME_RANGE": "this week",
+      "USER_ACCOUNT": "root"
+    }
+  },
+  {
+    "text": "Check for Phishing signatures last night",
+    "intent": "web_attack_analysis",
+    "entities": {
+      "ATTACK_TYPE": "Phishing",
+      "TIME_RANGE": "last night"
+    }
+  },
+  {
+    "text": "Total number of malware detections past 15 minutes",
+    "intent": "count_aggregate",
+    "entities": {
+      "TIME_RANGE": "past 15 minutes",
+      "EVENT_TYPE": "malware detections"
+    }
+  },
+  {
+    "text": "Show full network flow for the external IP today",
+    "intent": "incident_investigation",
+    "entities": {
+      "TIME_RANGE": "today",
+      "SOURCE_IP": "the external IP"
+    }
+  },
+  {
+    "text": "Pull all authentication attempts from last 24 hours",
+    "intent": "search_logs",
+    "entities": {
+      "TIME_RANGE": "last 24 hours",
+      "EVENT_TYPE": "authentication attempts"
+    }
+  },
+  {
+    "text": "What did user the service account do past 15 minutes?",
+    "intent": "incident_investigation",
+    "entities": {
+      "TIME_RANGE": "past 15 minutes",
+      "USER_ACCOUNT": "the service account"
+    }
+  },
+  {
+    "text": "Show all requests from this IP in the last hour",
+    "intent": "incident_investigation",
+    "entities": {
+      "TIME_RANGE": "in the last hour",
+      "SOURCE_IP": "this IP"
+    }
+  },
+  {
+    "text": "Find SQLi activity in the last hour",
+    "intent": "web_attack_analysis",
+    "entities": {
+      "ATTACK_TYPE": "SQLi",
+      "TIME_RANGE": "in the last hour"
+    }
+  },
+  {
+    "text": "Filter by low severity",
+    "intent": "filter_followup",
+    "entities": {
+      "SEVERITY": "low"
+    }
+  },
+  {
+    "text": "Show lateral movement today",
+    "intent": "search_logs",
+    "entities": {
+      "TIME_RANGE": "today",
+      "EVENT_TYPE": "lateral movement"
+    }
+  },
+  {
+    "text": "Did that IP trigger any low alerts this week?",
+    "intent": "incident_investigation",
+    "entities": {
+      "TIME_RANGE": "this week",
+      "SEVERITY": "low",
+      "SOURCE_IP": "that IP"
+    }
+  },
+  {
+    "text": "What does this alert mean",
+    "intent": "clarify_needed",
+    "entities": {}
+  },
+  {
+    "text": "Count total IDOR attempts past 15 minutes",
+    "intent": "count_aggregate",
+    "entities": {
+      "ATTACK_TYPE": "IDOR",
+      "TIME_RANGE": "past 15 minutes"
+    }
+  },
+  {
+    "text": "What is the total count of medium alerts this month",
+    "intent": "count_aggregate",
+    "entities": {
+      "TIME_RANGE": "this month",
+      "SEVERITY": "medium"
+    }
+  },
+  {
+    "text": "Give me a last 24 hours failed logins summary",
+    "intent": "generate_report",
+    "entities": {
+      "TIME_RANGE": "last 24 hours",
+      "EVENT_TYPE": "failed logins"
+    }
+  },
+  {
+    "text": "How many DDoS attacks happened this month",
+    "intent": "count_aggregate",
+    "entities": {
+      "ATTACK_TYPE": "DDoS",
+      "TIME_RANGE": "this month"
+    }
+  },
+  {
+    "text": "How many Phishing attacks happened this month",
+    "intent": "count_aggregate",
+    "entities": {
+      "ATTACK_TYPE": "Phishing",
+      "TIME_RANGE": "this month"
+    }
+  },
+  {
+    "text": "Count total IDOR attempts today",
+    "intent": "count_aggregate",
+    "entities": {
+      "ATTACK_TYPE": "IDOR",
+      "TIME_RANGE": "today"
+    }
+  },
+  {
+    "text": "Show me DDoS attempts past 15 minutes",
+    "intent": "web_attack_analysis",
+    "entities": {
+      "ATTACK_TYPE": "DDoS",
+      "TIME_RANGE": "past 15 minutes"
+    }
+  },
+  {
+    "text": "Show all requests from this IP today",
+    "intent": "incident_investigation",
+    "entities": {
+      "TIME_RANGE": "today",
+      "SOURCE_IP": "this IP"
+    }
+  },
+  {
+    "text": "Count total Brute Force attempts this month",
+    "intent": "count_aggregate",
+    "entities": {
+      "ATTACK_TYPE": "Brute Force",
+      "TIME_RANGE": "this month"
+    }
+  },
+  {
+    "text": "Check for XSS signatures past 15 minutes",
+    "intent": "web_attack_analysis",
+    "entities": {
+      "ATTACK_TYPE": "XSS",
+      "TIME_RANGE": "past 15 minutes"
+    }
+  },
+  {
+    "text": "Count total Brute Force attempts in the last hour",
+    "intent": "count_aggregate",
+    "entities": {
+      "ATTACK_TYPE": "Brute Force",
+      "TIME_RANGE": "in the last hour"
+    }
+  },
+  {
+    "text": "Total number of failed logins last 24 hours",
+    "intent": "count_aggregate",
+    "entities": {
+      "TIME_RANGE": "last 24 hours",
+      "EVENT_TYPE": "failed logins"
+    }
+  },
+  {
+    "text": "Count total Brute Force attempts last night",
+    "intent": "count_aggregate",
+    "entities": {
+      "ATTACK_TYPE": "Brute Force",
+      "TIME_RANGE": "last night"
+    }
+  },
+  {
+    "text": "What happened last night regarding malware detections?",
+    "intent": "search_logs",
+    "entities": {
+      "TIME_RANGE": "last night",
+      "EVENT_TYPE": "malware detections"
+    }
+  },
+  {
+    "text": "Show me XSS attempts last 24 hours",
+    "intent": "web_attack_analysis",
+    "entities": {
+      "ATTACK_TYPE": "XSS",
+      "TIME_RANGE": "last 24 hours"
+    }
+  },
+  {
+    "text": "Check for CSRF signatures yesterday",
+    "intent": "web_attack_analysis",
+    "entities": {
+      "ATTACK_TYPE": "CSRF",
+      "TIME_RANGE": "yesterday"
+    }
+  },
+  {
+    "text": "Any Brute Force attacks in the last hour",
+    "intent": "web_attack_analysis",
+    "entities": {
+      "ATTACK_TYPE": "Brute Force",
+      "TIME_RANGE": "in the last hour"
+    }
+  },
+  {
+    "text": "Give me a this month failed logins summary",
+    "intent": "generate_report",
+    "entities": {
+      "TIME_RANGE": "this month",
+      "EVENT_TYPE": "failed logins"
+    }
+  },
+  {
+    "text": "Any authentication attempts this week?",
+    "intent": "search_logs",
+    "entities": {
+      "TIME_RANGE": "this week",
+      "EVENT_TYPE": "authentication attempts"
+    }
+  },
+  {
+    "text": "Show full network flow for this IP this month",
+    "intent": "incident_investigation",
+    "entities": {
+      "TIME_RANGE": "this month",
+      "SOURCE_IP": "this IP"
+    }
+  },
+  {
+    "text": "Count total XSS attempts this week",
+    "intent": "count_aggregate",
+    "entities": {
+      "ATTACK_TYPE": "XSS",
+      "TIME_RANGE": "this week"
+    }
+  },
+  {
+    "text": "Generate security summary for in the last hour",
+    "intent": "generate_report",
+    "entities": {
+      "TIME_RANGE": "in the last hour"
+    }
+  },
+  {
+    "text": "Any privilege escalations in the last hour?",
+    "intent": "search_logs",
+    "entities": {
+      "TIME_RANGE": "in the last hour",
+      "EVENT_TYPE": "privilege escalations"
+    }
+  },
+  {
+    "text": "Only show attempts from that IP",
+    "intent": "filter_followup",
+    "entities": {
+      "SOURCE_IP": "that IP"
+    }
+  },
+  {
+    "text": "Show me IDOR attempts in the last hour",
+    "intent": "web_attack_analysis",
+    "entities": {
+      "ATTACK_TYPE": "IDOR",
+      "TIME_RANGE": "in the last hour"
+    }
+  },
+  {
+    "text": "Any SQLi attacks today",
+    "intent": "web_attack_analysis",
+    "entities": {
+      "ATTACK_TYPE": "SQLi",
+      "TIME_RANGE": "today"
+    }
+  },
+  {
+    "text": "Pull all suspicious logins from past 15 minutes",
+    "intent": "search_logs",
+    "entities": {
+      "TIME_RANGE": "past 15 minutes",
+      "EVENT_TYPE": "suspicious logins"
+    }
+  },
+  {
+    "text": "Show full network flow for the external IP this week",
+    "intent": "incident_investigation",
+    "entities": {
+      "TIME_RANGE": "this week",
+      "SOURCE_IP": "the external IP"
+    }
+  },
+  {
+    "text": "Trace all activity for admin this week",
+    "intent": "incident_investigation",
+    "entities": {
+      "TIME_RANGE": "this week",
+      "USER_ACCOUNT": "admin"
+    }
+  },
+  {
+    "text": "Show me RCE attempts last night",
+    "intent": "web_attack_analysis",
+    "entities": {
+      "ATTACK_TYPE": "RCE",
+      "TIME_RANGE": "last night"
+    }
+  },
+  {
+    "text": "Did that IP trigger any critical alerts in the last hour?",
+    "intent": "incident_investigation",
+    "entities": {
+      "TIME_RANGE": "in the last hour",
+      "SEVERITY": "critical",
+      "SOURCE_IP": "that IP"
+    }
+  },
+  {
+    "text": "Trace all activity for admin past 15 minutes",
+    "intent": "incident_investigation",
+    "entities": {
+      "TIME_RANGE": "past 15 minutes",
+      "USER_ACCOUNT": "admin"
+    }
+  },
+  {
+    "text": "Show all requests from the external IP in the last hour",
+    "intent": "incident_investigation",
+    "entities": {
+      "TIME_RANGE": "in the last hour",
+      "SOURCE_IP": "the external IP"
+    }
+  },
+  {
+    "text": "Total number of failed logins yesterday",
+    "intent": "count_aggregate",
+    "entities": {
+      "TIME_RANGE": "yesterday",
+      "EVENT_TYPE": "failed logins"
+    }
+  },
+  {
+    "text": "Find IDOR activity this week",
+    "intent": "web_attack_analysis",
+    "entities": {
+      "ATTACK_TYPE": "IDOR",
+      "TIME_RANGE": "this week"
+    }
+  },
+  {
+    "text": "Any authentication attempts last night?",
+    "intent": "search_logs",
+    "entities": {
+      "TIME_RANGE": "last night",
+      "EVENT_TYPE": "authentication attempts"
+    }
+  },
+  {
+    "text": "Count total RCE attempts today",
+    "intent": "count_aggregate",
+    "entities": {
+      "ATTACK_TYPE": "RCE",
+      "TIME_RANGE": "today"
+    }
+  },
+  {
+    "text": "Pull all malware detections from this week",
+    "intent": "search_logs",
+    "entities": {
+      "TIME_RANGE": "this week",
+      "EVENT_TYPE": "malware detections"
+    }
+  },
+  {
+    "text": "Export the lateral movement dashboard for yesterday",
+    "intent": "generate_report",
+    "entities": {
+      "TIME_RANGE": "yesterday",
+      "EVENT_TYPE": "lateral movement"
+    }
+  },
+  {
+    "text": "What did user root do this month?",
+    "intent": "incident_investigation",
+    "entities": {
+      "TIME_RANGE": "this month",
+      "USER_ACCOUNT": "root"
+    }
+  },
+  {
+    "text": "Show all requests from 192.168.1.10 yesterday",
+    "intent": "incident_investigation",
+    "entities": {
+      "TIME_RANGE": "yesterday",
+      "SOURCE_IP": "192.168.1.10"
+    }
+  },
+  {
+    "text": "Check for RCE signatures last 24 hours",
+    "intent": "web_attack_analysis",
+    "entities": {
+      "ATTACK_TYPE": "RCE",
+      "TIME_RANGE": "last 24 hours"
+    }
+  },
+  {
+    "text": "Did 172.16.0.50 trigger any critical alerts last night?",
+    "intent": "incident_investigation",
+    "entities": {
+      "TIME_RANGE": "last night",
+      "SEVERITY": "critical",
+      "SOURCE_IP": "172.16.0.50"
+    }
+  },
+  {
+    "text": "Give me the numbers for privilege escalations last 24 hours",
+    "intent": "count_aggregate",
+    "entities": {
+      "TIME_RANGE": "last 24 hours",
+      "EVENT_TYPE": "privilege escalations"
+    }
+  },
+  {
+    "text": "What information do you need from me",
+    "intent": "clarify_needed",
+    "entities": {}
+  },
+  {
+    "text": "Find SQLi activity yesterday",
+    "intent": "web_attack_analysis",
+    "entities": {
+      "ATTACK_TYPE": "SQLi",
+      "TIME_RANGE": "yesterday"
+    }
+  },
+  {
+    "text": "Show lateral movement last 24 hours",
+    "intent": "search_logs",
+    "entities": {
+      "TIME_RANGE": "last 24 hours",
+      "EVENT_TYPE": "lateral movement"
+    }
+  },
+  {
+    "text": "Did we get any IDOR alerts last night?",
+    "intent": "web_attack_analysis",
+    "entities": {
+      "ATTACK_TYPE": "IDOR",
+      "TIME_RANGE": "last night"
+    }
+  },
+  {
+    "text": "Show all requests from 10.0.0.5 today",
+    "intent": "incident_investigation",
+    "entities": {
+      "TIME_RANGE": "today",
+      "SOURCE_IP": "10.0.0.5"
+    }
+  },
+  {
+    "text": "Generate security summary for past 15 minutes",
+    "intent": "generate_report",
+    "entities": {
+      "TIME_RANGE": "past 15 minutes"
+    }
+  },
+  {
+    "text": "Find Brute Force activity in the last hour",
+    "intent": "web_attack_analysis",
+    "entities": {
+      "ATTACK_TYPE": "Brute Force",
+      "TIME_RANGE": "in the last hour"
+    }
+  },
+  {
+    "text": "Any malware detections in the last hour?",
+    "intent": "search_logs",
+    "entities": {
+      "TIME_RANGE": "in the last hour",
+      "EVENT_TYPE": "malware detections"
+    }
+  },
+  {
+    "text": "Check for Brute Force signatures this week",
+    "intent": "web_attack_analysis",
+    "entities": {
+      "ATTACK_TYPE": "Brute Force",
+      "TIME_RANGE": "this week"
+    }
+  },
+  {
+    "text": "Did we get any CSRF alerts last night?",
+    "intent": "web_attack_analysis",
+    "entities": {
+      "ATTACK_TYPE": "CSRF",
+      "TIME_RANGE": "last night"
+    }
+  },
+  {
+    "text": "Exclude IP that IP",
+    "intent": "filter_followup",
+    "entities": {
+      "SOURCE_IP": "that IP"
+    }
+  },
+  {
+    "text": "Pull all suspicious logins from yesterday",
+    "intent": "search_logs",
+    "entities": {
+      "TIME_RANGE": "yesterday",
+      "EVENT_TYPE": "suspicious logins"
+    }
+  },
+  {
+    "text": "Can you show me an example query",
+    "intent": "clarify_needed",
+    "entities": {}
+  },
+  {
+    "text": "Create a this month attack report with charts",
+    "intent": "generate_report",
+    "entities": {
+      "TIME_RANGE": "this month"
+    }
+  },
+  {
+    "text": "Pull logs for Phishing exploits today",
+    "intent": "web_attack_analysis",
+    "entities": {
+      "ATTACK_TYPE": "Phishing",
+      "TIME_RANGE": "today"
+    }
+  },
+  {
+    "text": "Give me the numbers for malware detections this week",
+    "intent": "count_aggregate",
+    "entities": {
+      "TIME_RANGE": "this week",
+      "EVENT_TYPE": "malware detections"
+    }
+  },
+  {
+    "text": "Check for XSS signatures this month",
+    "intent": "web_attack_analysis",
+    "entities": {
+      "ATTACK_TYPE": "XSS",
+      "TIME_RANGE": "this month"
+    }
+  },
+  {
+    "text": "Any lateral movement today?",
+    "intent": "search_logs",
+    "entities": {
+      "TIME_RANGE": "today",
+      "EVENT_TYPE": "lateral movement"
+    }
+  },
+  {
+    "text": "Create a past 15 minutes attack report with charts",
+    "intent": "generate_report",
+    "entities": {
+      "TIME_RANGE": "past 15 minutes"
+    }
+  },
+  {
+    "text": "Did that IP trigger any critical alerts this month?",
+    "intent": "incident_investigation",
+    "entities": {
+      "TIME_RANGE": "this month",
+      "SEVERITY": "critical",
+      "SOURCE_IP": "that IP"
+    }
+  },
+  {
+    "text": "What is the total count of low alerts today",
+    "intent": "count_aggregate",
+    "entities": {
+      "TIME_RANGE": "today",
+      "SEVERITY": "low"
+    }
+  },
+  {
+    "text": "Show all requests from that IP this month",
+    "intent": "incident_investigation",
+    "entities": {
+      "TIME_RANGE": "this month",
+      "SOURCE_IP": "that IP"
+    }
+  },
+  {
+    "text": "Any RCE attacks today",
+    "intent": "web_attack_analysis",
+    "entities": {
+      "ATTACK_TYPE": "RCE",
+      "TIME_RANGE": "today"
+    }
+  },
+  {
+    "text": "Pull logs for IDOR exploits in the last hour",
+    "intent": "web_attack_analysis",
+    "entities": {
+      "ATTACK_TYPE": "IDOR",
+      "TIME_RANGE": "in the last hour"
+    }
+  },
+  {
+    "text": "Export the authentication attempts dashboard for in the last hour",
+    "intent": "generate_report",
+    "entities": {
+      "TIME_RANGE": "in the last hour",
+      "EVENT_TYPE": "authentication attempts"
+    }
+  },
+  {
+    "text": "What did user the service account do in the last hour?",
+    "intent": "incident_investigation",
+    "entities": {
+      "TIME_RANGE": "in the last hour",
+      "USER_ACCOUNT": "the service account"
+    }
+  },
+  {
+    "text": "Find RCE activity this month",
+    "intent": "web_attack_analysis",
+    "entities": {
+      "ATTACK_TYPE": "RCE",
+      "TIME_RANGE": "this month"
+    }
+  },
+  {
+    "text": "Total number of suspicious logins in the last hour",
+    "intent": "count_aggregate",
+    "entities": {
+      "TIME_RANGE": "in the last hour",
+      "EVENT_TYPE": "suspicious logins"
+    }
+  },
+  {
+    "text": "Any SQLi attacks last 24 hours",
+    "intent": "web_attack_analysis",
+    "entities": {
+      "ATTACK_TYPE": "SQLi",
+      "TIME_RANGE": "last 24 hours"
+    }
+  },
+  {
+    "text": "Total number of failed logins this week",
+    "intent": "count_aggregate",
+    "entities": {
+      "TIME_RANGE": "this week",
+      "EVENT_TYPE": "failed logins"
+    }
+  },
+  {
+    "text": "How do I filter results",
+    "intent": "clarify_needed",
+    "entities": {}
+  },
+  {
+    "text": "What happened past 15 minutes regarding failed logins?",
+    "intent": "search_logs",
+    "entities": {
+      "TIME_RANGE": "past 15 minutes",
+      "EVENT_TYPE": "failed logins"
+    }
+  },
+  {
+    "text": "Pull logs for CSRF exploits past 15 minutes",
+    "intent": "web_attack_analysis",
+    "entities": {
+      "ATTACK_TYPE": "CSRF",
+      "TIME_RANGE": "past 15 minutes"
+    }
+  },
+  {
+    "text": "Did this IP trigger any high alerts in the last hour?",
+    "intent": "incident_investigation",
+    "entities": {
+      "TIME_RANGE": "in the last hour",
+      "SEVERITY": "high",
+      "SOURCE_IP": "this IP"
+    }
+  },
+  {
+    "text": "Create a yesterday attack report with charts",
+    "intent": "generate_report",
+    "entities": {
+      "TIME_RANGE": "yesterday"
+    }
+  },
+  {
+    "text": "Total number of privilege escalations past 15 minutes",
+    "intent": "count_aggregate",
+    "entities": {
+      "TIME_RANGE": "past 15 minutes",
+      "EVENT_TYPE": "privilege escalations"
+    }
+  },
+  {
+    "text": "Pull all suspicious logins from this week",
+    "intent": "search_logs",
+    "entities": {
+      "TIME_RANGE": "this week",
+      "EVENT_TYPE": "suspicious logins"
+    }
+  },
+  {
+    "text": "Show me XSS attempts today",
+    "intent": "web_attack_analysis",
+    "entities": {
+      "ATTACK_TYPE": "XSS",
+      "TIME_RANGE": "today"
+    }
+  },
+  {
+    "text": "What happened yesterday regarding failed logins?",
+    "intent": "search_logs",
+    "entities": {
+      "TIME_RANGE": "yesterday",
+      "EVENT_TYPE": "failed logins"
+    }
+  },
+  {
+    "text": "Show authentication attempts today",
+    "intent": "search_logs",
+    "entities": {
+      "TIME_RANGE": "today",
+      "EVENT_TYPE": "authentication attempts"
+    }
+  },
+  {
+    "text": "Pull logs for DDoS exploits yesterday",
+    "intent": "web_attack_analysis",
+    "entities": {
+      "ATTACK_TYPE": "DDoS",
+      "TIME_RANGE": "yesterday"
+    }
+  },
+  {
+    "text": "Any suspicious logins yesterday?",
+    "intent": "search_logs",
+    "entities": {
+      "TIME_RANGE": "yesterday",
+      "EVENT_TYPE": "suspicious logins"
+    }
+  },
+  {
+    "text": "What malware detections occurred past 15 minutes",
+    "intent": "search_logs",
+    "entities": {
+      "TIME_RANGE": "past 15 minutes",
+      "EVENT_TYPE": "malware detections"
+    }
+  },
+  {
+    "text": "What is the total count of critical alerts this month",
+    "intent": "count_aggregate",
+    "entities": {
+      "TIME_RANGE": "this month",
+      "SEVERITY": "critical"
+    }
+  },
+  {
+    "text": "Export the privilege escalations dashboard for in the last hour",
+    "intent": "generate_report",
+    "entities": {
+      "TIME_RANGE": "in the last hour",
+      "EVENT_TYPE": "privilege escalations"
+    }
+  },
+  {
+    "text": "Export the lateral movement dashboard for in the last hour",
+    "intent": "generate_report",
+    "entities": {
+      "TIME_RANGE": "in the last hour",
+      "EVENT_TYPE": "lateral movement"
+    }
+  },
+  {
+    "text": "Show authentication attempts past 15 minutes",
+    "intent": "search_logs",
+    "entities": {
+      "TIME_RANGE": "past 15 minutes",
+      "EVENT_TYPE": "authentication attempts"
+    }
+  },
+  {
+    "text": "What suspicious logins occurred in the last hour",
+    "intent": "search_logs",
+    "entities": {
+      "TIME_RANGE": "in the last hour",
+      "EVENT_TYPE": "suspicious logins"
+    }
+  },
+  {
+    "text": "Show all requests from the external IP today",
+    "intent": "incident_investigation",
+    "entities": {
+      "TIME_RANGE": "today",
+      "SOURCE_IP": "the external IP"
+    }
+  },
+  {
+    "text": "Check for Phishing signatures this month",
+    "intent": "web_attack_analysis",
+    "entities": {
+      "ATTACK_TYPE": "Phishing",
+      "TIME_RANGE": "this month"
+    }
+  },
+  {
+    "text": "How do I start an investigation",
+    "intent": "clarify_needed",
+    "entities": {}
+  },
+  {
+    "text": "What authentication attempts occurred last 24 hours",
+    "intent": "search_logs",
+    "entities": {
+      "TIME_RANGE": "last 24 hours",
+      "EVENT_TYPE": "authentication attempts"
+    }
+  },
+  {
+    "text": "Export the failed logins dashboard for in the last hour",
+    "intent": "generate_report",
+    "entities": {
+      "TIME_RANGE": "in the last hour",
+      "EVENT_TYPE": "failed logins"
+    }
+  },
+  {
+    "text": "What happened last 24 hours regarding malware detections?",
+    "intent": "search_logs",
+    "entities": {
+      "TIME_RANGE": "last 24 hours",
+      "EVENT_TYPE": "malware detections"
+    }
+  },
+  {
+    "text": "Filter by critical severity",
+    "intent": "filter_followup",
+    "entities": {
+      "SEVERITY": "critical"
+    }
+  },
+  {
+    "text": "Pull all lateral movement from last 24 hours",
+    "intent": "search_logs",
+    "entities": {
+      "TIME_RANGE": "last 24 hours",
+      "EVENT_TYPE": "lateral movement"
+    }
+  },
+  {
+    "text": "Generate a summary of attacks this month",
+    "intent": "generate_report",
+    "entities": {
+      "TIME_RANGE": "this month"
+    }
+  },
+  {
+    "text": "Find CSRF activity this week",
+    "intent": "web_attack_analysis",
+    "entities": {
+      "ATTACK_TYPE": "CSRF",
+      "TIME_RANGE": "this week"
+    }
+  },
+  {
+    "text": "What is the total count of high alerts yesterday",
+    "intent": "count_aggregate",
+    "entities": {
+      "TIME_RANGE": "yesterday",
+      "SEVERITY": "high"
+    }
+  },
+  {
+    "text": "Show full network flow for the external IP past 15 minutes",
+    "intent": "incident_investigation",
+    "entities": {
+      "TIME_RANGE": "past 15 minutes",
+      "SOURCE_IP": "the external IP"
+    }
+  },
+  {
+    "text": "Filter by medium severity",
+    "intent": "filter_followup",
+    "entities": {
+      "SEVERITY": "medium"
+    }
+  },
+  {
+    "text": "Show full network flow for that IP yesterday",
+    "intent": "incident_investigation",
+    "entities": {
+      "TIME_RANGE": "yesterday",
+      "SOURCE_IP": "that IP"
+    }
+  },
+  {
+    "text": "Give me the numbers for failed logins in the last hour",
+    "intent": "count_aggregate",
+    "entities": {
+      "TIME_RANGE": "in the last hour",
+      "EVENT_TYPE": "failed logins"
+    }
+  },
+  {
+    "text": "Pull logs for DDoS exploits last 24 hours",
+    "intent": "web_attack_analysis",
+    "entities": {
+      "ATTACK_TYPE": "DDoS",
+      "TIME_RANGE": "last 24 hours"
+    }
+  },
+  {
+    "text": "Did this IP trigger any medium alerts this week?",
+    "intent": "incident_investigation",
+    "entities": {
+      "TIME_RANGE": "this week",
+      "SEVERITY": "medium",
+      "SOURCE_IP": "this IP"
+    }
+  },
+  {
+    "text": "Did 172.16.0.50 trigger any low alerts past 15 minutes?",
+    "intent": "incident_investigation",
+    "entities": {
+      "TIME_RANGE": "past 15 minutes",
+      "SEVERITY": "low",
+      "SOURCE_IP": "172.16.0.50"
+    }
+  },
+  {
+    "text": "Pull all privilege escalations from in the last hour",
+    "intent": "search_logs",
+    "entities": {
+      "TIME_RANGE": "in the last hour",
+      "EVENT_TYPE": "privilege escalations"
+    }
+  },
+  {
+    "text": "Pull all malware detections from yesterday",
+    "intent": "search_logs",
+    "entities": {
+      "TIME_RANGE": "yesterday",
+      "EVENT_TYPE": "malware detections"
+    }
+  },
+  {
+    "text": "Did we get any RCE alerts today?",
+    "intent": "web_attack_analysis",
+    "entities": {
+      "ATTACK_TYPE": "RCE",
+      "TIME_RANGE": "today"
+    }
+  },
+  {
+    "text": "I am not sure what to search for",
+    "intent": "clarify_needed",
+    "entities": {}
+  },
+  {
+    "text": "Count total Brute Force attempts yesterday",
+    "intent": "count_aggregate",
+    "entities": {
+      "ATTACK_TYPE": "Brute Force",
+      "TIME_RANGE": "yesterday"
+    }
+  },
+  {
+    "text": "Exclude IP this IP",
+    "intent": "filter_followup",
+    "entities": {
+      "SOURCE_IP": "this IP"
+    }
+  },
+  {
+    "text": "Compile a report on IDOR for in the last hour",
+    "intent": "generate_report",
+    "entities": {
+      "ATTACK_TYPE": "IDOR",
+      "TIME_RANGE": "in the last hour"
+    }
+  },
+  {
+    "text": "Total number of authentication attempts today",
+    "intent": "count_aggregate",
+    "entities": {
+      "TIME_RANGE": "today",
+      "EVENT_TYPE": "authentication attempts"
+    }
+  },
+  {
+    "text": "Give me the numbers for failed logins this week",
+    "intent": "count_aggregate",
+    "entities": {
+      "TIME_RANGE": "this week",
+      "EVENT_TYPE": "failed logins"
+    }
+  },
+  {
+    "text": "Generate a summary of attacks last night",
+    "intent": "generate_report",
+    "entities": {
+      "TIME_RANGE": "last night"
+    }
+  },
+  {
+    "text": "Trace all activity for system past 15 minutes",
+    "intent": "incident_investigation",
+    "entities": {
+      "TIME_RANGE": "past 15 minutes",
+      "USER_ACCOUNT": "system"
+    }
+  },
+  {
+    "text": "What authentication attempts occurred yesterday",
+    "intent": "search_logs",
+    "entities": {
+      "TIME_RANGE": "yesterday",
+      "EVENT_TYPE": "authentication attempts"
+    }
+  },
+  {
+    "text": "Show full network flow for 192.168.1.10 this week",
+    "intent": "incident_investigation",
+    "entities": {
+      "TIME_RANGE": "this week",
+      "SOURCE_IP": "192.168.1.10"
+    }
+  },
+  {
+    "text": "Give me a today suspicious logins summary",
+    "intent": "generate_report",
+    "entities": {
+      "TIME_RANGE": "today",
+      "EVENT_TYPE": "suspicious logins"
+    }
+  },
+  {
+    "text": "Total number of privilege escalations last night",
+    "intent": "count_aggregate",
+    "entities": {
+      "TIME_RANGE": "last night",
+      "EVENT_TYPE": "privilege escalations"
+    }
+  },
+  {
+    "text": "What happened today regarding malware detections?",
+    "intent": "search_logs",
+    "entities": {
+      "TIME_RANGE": "today",
+      "EVENT_TYPE": "malware detections"
+    }
+  },
+  {
+    "text": "Check for DDoS signatures today",
+    "intent": "web_attack_analysis",
+    "entities": {
+      "ATTACK_TYPE": "DDoS",
+      "TIME_RANGE": "today"
+    }
+  },
+  {
+    "text": "How many SQLi attacks happened past 15 minutes",
+    "intent": "count_aggregate",
+    "entities": {
+      "ATTACK_TYPE": "SQLi",
+      "TIME_RANGE": "past 15 minutes"
+    }
+  },
+  {
+    "text": "What is the total count of medium alerts last night",
+    "intent": "count_aggregate",
+    "entities": {
+      "TIME_RANGE": "last night",
+      "SEVERITY": "medium"
+    }
+  },
+  {
+    "text": "Show suspicious logins this week",
+    "intent": "search_logs",
+    "entities": {
+      "TIME_RANGE": "this week",
+      "EVENT_TYPE": "suspicious logins"
+    }
+  },
+  {
+    "text": "What did user root do yesterday?",
+    "intent": "incident_investigation",
+    "entities": {
+      "TIME_RANGE": "yesterday",
+      "USER_ACCOUNT": "root"
+    }
+  },
+  {
+    "text": "Trace all activity for unknown users this month",
+    "intent": "incident_investigation",
+    "entities": {
+      "TIME_RANGE": "this month",
+      "USER_ACCOUNT": "unknown users"
+    }
+  },
+  {
+    "text": "What did user unknown users do this month?",
+    "intent": "incident_investigation",
+    "entities": {
+      "TIME_RANGE": "this month",
+      "USER_ACCOUNT": "unknown users"
+    }
+  },
+  {
+    "text": "Create a last 24 hours attack report with charts",
+    "intent": "generate_report",
+    "entities": {
+      "TIME_RANGE": "last 24 hours"
+    }
+  },
+  {
+    "text": "Any RCE attacks this month",
+    "intent": "web_attack_analysis",
+    "entities": {
+      "ATTACK_TYPE": "RCE",
+      "TIME_RANGE": "this month"
+    }
+  },
+  {
+    "text": "Filter only from IP that IP",
+    "intent": "filter_followup",
+    "entities": {
+      "SOURCE_IP": "that IP"
+    }
+  },
+  {
+    "text": "Show all requests from 10.0.0.5 in the last hour",
+    "intent": "incident_investigation",
+    "entities": {
+      "TIME_RANGE": "in the last hour",
+      "SOURCE_IP": "10.0.0.5"
+    }
+  },
+  {
+    "text": "Give me the numbers for privilege escalations last night",
+    "intent": "count_aggregate",
+    "entities": {
+      "TIME_RANGE": "last night",
+      "EVENT_TYPE": "privilege escalations"
+    }
+  },
+  {
+    "text": "Pull logs for SQLi exploits past 15 minutes",
+    "intent": "web_attack_analysis",
+    "entities": {
+      "ATTACK_TYPE": "SQLi",
+      "TIME_RANGE": "past 15 minutes"
+    }
+  },
+  {
+    "text": "How many Phishing attacks happened in the last hour",
+    "intent": "count_aggregate",
+    "entities": {
+      "ATTACK_TYPE": "Phishing",
+      "TIME_RANGE": "in the last hour"
+    }
+  },
+  {
+    "text": "Any lateral movement in the last hour?",
+    "intent": "search_logs",
+    "entities": {
+      "TIME_RANGE": "in the last hour",
+      "EVENT_TYPE": "lateral movement"
+    }
+  },
+  {
+    "text": "What suspicious logins occurred last 24 hours",
+    "intent": "search_logs",
+    "entities": {
+      "TIME_RANGE": "last 24 hours",
+      "EVENT_TYPE": "suspicious logins"
+    }
+  },
+  {
+    "text": "Pull all authentication attempts from today",
+    "intent": "search_logs",
+    "entities": {
+      "TIME_RANGE": "today",
+      "EVENT_TYPE": "authentication attempts"
+    }
+  },
+  {
+    "text": "Total number of lateral movement last 24 hours",
+    "intent": "count_aggregate",
+    "entities": {
+      "TIME_RANGE": "last 24 hours",
+      "EVENT_TYPE": "lateral movement"
+    }
+  },
+  {
+    "text": "Just show me logs for user root",
+    "intent": "filter_followup",
+    "entities": {
+      "USER_ACCOUNT": "root"
+    }
+  },
+  {
+    "text": "Any DDoS attacks today",
+    "intent": "web_attack_analysis",
+    "entities": {
+      "ATTACK_TYPE": "DDoS",
+      "TIME_RANGE": "today"
+    }
+  },
+  {
+    "text": "What privilege escalations occurred this month",
+    "intent": "search_logs",
+    "entities": {
+      "TIME_RANGE": "this month",
+      "EVENT_TYPE": "privilege escalations"
+    }
+  },
+  {
+    "text": "Trace all activity for the service account this month",
+    "intent": "incident_investigation",
+    "entities": {
+      "TIME_RANGE": "this month",
+      "USER_ACCOUNT": "the service account"
+    }
+  },
+  {
+    "text": "Did 172.16.0.50 trigger any high alerts today?",
+    "intent": "incident_investigation",
+    "entities": {
+      "TIME_RANGE": "today",
+      "SEVERITY": "high",
+      "SOURCE_IP": "172.16.0.50"
+    }
+  },
+  {
+    "text": "Show full network flow for the external IP yesterday",
+    "intent": "incident_investigation",
+    "entities": {
+      "TIME_RANGE": "yesterday",
+      "SOURCE_IP": "the external IP"
+    }
+  },
+  {
+    "text": "Check for SQLi signatures today",
+    "intent": "web_attack_analysis",
+    "entities": {
+      "ATTACK_TYPE": "SQLi",
+      "TIME_RANGE": "today"
+    }
+  },
+  {
+    "text": "Total number of privilege escalations this month",
+    "intent": "count_aggregate",
+    "entities": {
+      "TIME_RANGE": "this month",
+      "EVENT_TYPE": "privilege escalations"
+    }
+  },
+  {
+    "text": "Show full network flow for this IP last night",
+    "intent": "incident_investigation",
+    "entities": {
+      "TIME_RANGE": "last night",
+      "SOURCE_IP": "this IP"
+    }
+  },
+  {
+    "text": "Pull logs for RCE exploits yesterday",
+    "intent": "web_attack_analysis",
+    "entities": {
+      "ATTACK_TYPE": "RCE",
+      "TIME_RANGE": "yesterday"
+    }
+  },
+  {
+    "text": "Just show me logs for user admin",
+    "intent": "filter_followup",
+    "entities": {
+      "USER_ACCOUNT": "admin"
+    }
+  },
+  {
+    "text": "How many Phishing attacks happened last night",
+    "intent": "count_aggregate",
+    "entities": {
+      "ATTACK_TYPE": "Phishing",
+      "TIME_RANGE": "last night"
+    }
+  },
+  {
+    "text": "What happened today regarding lateral movement?",
+    "intent": "search_logs",
+    "entities": {
+      "TIME_RANGE": "today",
+      "EVENT_TYPE": "lateral movement"
+    }
+  },
+  {
+    "text": "Compile a report on SQLi for today",
+    "intent": "generate_report",
+    "entities": {
+      "ATTACK_TYPE": "SQLi",
+      "TIME_RANGE": "today"
+    }
+  },
+  {
+    "text": "What happened this month regarding authentication attempts?",
+    "intent": "search_logs",
+    "entities": {
+      "TIME_RANGE": "this month",
+      "EVENT_TYPE": "authentication attempts"
+    }
+  },
+  {
+    "text": "Count total Brute Force attempts today",
+    "intent": "count_aggregate",
+    "entities": {
+      "ATTACK_TYPE": "Brute Force",
+      "TIME_RANGE": "today"
+    }
+  },
+  {
+    "text": "Give me a last 24 hours privilege escalations summary",
+    "intent": "generate_report",
+    "entities": {
+      "TIME_RANGE": "last 24 hours",
+      "EVENT_TYPE": "privilege escalations"
+    }
+  },
+  {
+    "text": "Count total DDoS attempts yesterday",
+    "intent": "count_aggregate",
+    "entities": {
+      "ATTACK_TYPE": "DDoS",
+      "TIME_RANGE": "yesterday"
+    }
+  },
+  {
+    "text": "Only show attempts from 192.168.1.10",
+    "intent": "filter_followup",
+    "entities": {
+      "SOURCE_IP": "192.168.1.10"
+    }
+  },
+  {
+    "text": "Give me a last night lateral movement summary",
+    "intent": "generate_report",
+    "entities": {
+      "TIME_RANGE": "last night",
+      "EVENT_TYPE": "lateral movement"
+    }
+  },
+  {
+    "text": "Give me a this week malware detections summary",
+    "intent": "generate_report",
+    "entities": {
+      "TIME_RANGE": "this week",
+      "EVENT_TYPE": "malware detections"
+    }
+  },
+  {
+    "text": "Give me the numbers for lateral movement last night",
+    "intent": "count_aggregate",
+    "entities": {
+      "TIME_RANGE": "last night",
+      "EVENT_TYPE": "lateral movement"
+    }
+  },
+  {
+    "text": "Export the suspicious logins dashboard for in the last hour",
+    "intent": "generate_report",
+    "entities": {
+      "TIME_RANGE": "in the last hour",
+      "EVENT_TYPE": "suspicious logins"
+    }
+  },
+  {
+    "text": "Just show me logs for user system",
+    "intent": "filter_followup",
+    "entities": {
+      "USER_ACCOUNT": "system"
+    }
+  },
+  {
+    "text": "Did we get any Path Traversal alerts yesterday?",
+    "intent": "web_attack_analysis",
+    "entities": {
+      "ATTACK_TYPE": "Path Traversal",
+      "TIME_RANGE": "yesterday"
+    }
+  },
+  {
+    "text": "What do you mean by unusual activity",
+    "intent": "clarify_needed",
+    "entities": {}
+  },
+  {
+    "text": "Filter only from IP the external IP",
+    "intent": "filter_followup",
+    "entities": {
+      "SOURCE_IP": "the external IP"
+    }
+  },
+  {
+    "text": "Any RCE attacks past 15 minutes",
+    "intent": "web_attack_analysis",
+    "entities": {
+      "ATTACK_TYPE": "RCE",
+      "TIME_RANGE": "past 15 minutes"
+    }
+  },
+  {
+    "text": "Exclude IP 10.0.0.5",
+    "intent": "filter_followup",
+    "entities": {
+      "SOURCE_IP": "10.0.0.5"
+    }
+  },
+  {
+    "text": "Check for Path Traversal signatures today",
+    "intent": "web_attack_analysis",
+    "entities": {
+      "ATTACK_TYPE": "Path Traversal",
+      "TIME_RANGE": "today"
+    }
+  },
+  {
+    "text": "What did user the service account do this week?",
+    "intent": "incident_investigation",
+    "entities": {
+      "TIME_RANGE": "this week",
+      "USER_ACCOUNT": "the service account"
+    }
+  },
+  {
+    "text": "What did user the service account do today?",
+    "intent": "incident_investigation",
+    "entities": {
+      "TIME_RANGE": "today",
+      "USER_ACCOUNT": "the service account"
+    }
+  },
+  {
+    "text": "Did the external IP trigger any low alerts this month?",
+    "intent": "incident_investigation",
+    "entities": {
+      "TIME_RANGE": "this month",
+      "SEVERITY": "low",
+      "SOURCE_IP": "the external IP"
+    }
+  },
+  {
+    "text": "Export the privilege escalations dashboard for yesterday",
+    "intent": "generate_report",
+    "entities": {
+      "TIME_RANGE": "yesterday",
+      "EVENT_TYPE": "privilege escalations"
+    }
+  },
+  {
+    "text": "Filter only from IP 10.0.0.5",
+    "intent": "filter_followup",
+    "entities": {
+      "SOURCE_IP": "10.0.0.5"
+    }
+  },
+  {
+    "text": "What is the total count of low alerts last 24 hours",
+    "intent": "count_aggregate",
+    "entities": {
+      "TIME_RANGE": "last 24 hours",
+      "SEVERITY": "low"
+    }
+  },
+  {
+    "text": "Check for Brute Force signatures last 24 hours",
+    "intent": "web_attack_analysis",
+    "entities": {
+      "ATTACK_TYPE": "Brute Force",
+      "TIME_RANGE": "last 24 hours"
+    }
+  },
+  {
+    "text": "What happened in the last hour regarding malware detections?",
+    "intent": "search_logs",
+    "entities": {
+      "TIME_RANGE": "in the last hour",
+      "EVENT_TYPE": "malware detections"
+    }
+  },
+  {
+    "text": "Show me Path Traversal attempts last 24 hours",
+    "intent": "web_attack_analysis",
+    "entities": {
+      "ATTACK_TYPE": "Path Traversal",
+      "TIME_RANGE": "last 24 hours"
+    }
+  },
+  {
+    "text": "Any SQLi attacks this month",
+    "intent": "web_attack_analysis",
+    "entities": {
+      "ATTACK_TYPE": "SQLi",
+      "TIME_RANGE": "this month"
+    }
+  },
+  {
+    "text": "What is the difference between XSS and IDOR",
+    "intent": "clarify_needed",
+    "entities": {}
+  },
+  {
+    "text": "Give me the numbers for authentication attempts today",
+    "intent": "count_aggregate",
+    "entities": {
+      "TIME_RANGE": "today",
+      "EVENT_TYPE": "authentication attempts"
+    }
+  },
+  {
+    "text": "What is the total count of medium alerts in the last hour",
+    "intent": "count_aggregate",
+    "entities": {
+      "TIME_RANGE": "in the last hour",
+      "SEVERITY": "medium"
+    }
+  },
+  {
+    "text": "Narrow it down to critical events",
+    "intent": "filter_followup",
+    "entities": {
+      "SEVERITY": "critical"
+    }
+  },
+  {
+    "text": "Only show attempts from 10.0.0.5",
+    "intent": "filter_followup",
+    "entities": {
+      "SOURCE_IP": "10.0.0.5"
+    }
+  }
+]
