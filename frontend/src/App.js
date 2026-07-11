@@ -585,17 +585,24 @@ export default function App() {
           <div style={styles.sidebarSection}>
             <p style={styles.sidebarTitle}>Alert Summary</p>
             {[
-              { label: 'XSS Attacks', count: alertStats.XSS, color: COLORS.accent },
-              { label: 'IDOR Attempts', count: alertStats.IDOR, color: COLORS.warning },
-              { label: 'Total Alerts', count: alertStats.Total, color: COLORS.info },
-            ].map(stat => (
-              <div key={stat.label} style={styles.statCard}>
-                <span style={styles.statLabel}>{stat.label}</span>
-                <span style={{ ...styles.statBadge, backgroundColor: stat.color + '15', color: stat.color }}>
-                  {stat.count}
-                </span>
-              </div>
-            ))}
+  { label: 'XSS Attacks', count: alertStats.XSS, color: COLORS.accent, query: 'Show me XSS attempts this week' },
+  { label: 'IDOR Attempts', count: alertStats.IDOR, color: COLORS.warning, query: 'Show me IDOR attempts this week' },
+  { label: 'Total Alerts', count: alertStats.Total, color: COLORS.info, query: 'Show me all alerts this week' },
+].map(stat => (
+  <div
+    key={stat.label}
+    style={{ ...styles.statCard, cursor: 'pointer', transition: 'all 0.15s' }}
+    onClick={() => sendMessage(stat.query)}
+    onMouseEnter={e => e.currentTarget.style.borderColor = stat.color}
+    onMouseLeave={e => e.currentTarget.style.borderColor = COLORS.border}
+    title={`Click to investigate ${stat.label}`}
+  >
+    <span style={styles.statLabel}>{stat.label}</span>
+    <span style={{ ...styles.statBadge, backgroundColor: stat.color + '15', color: stat.color }}>
+      {stat.count}
+    </span>
+  </div>
+))}
           </div>
 
           <div style={{ ...styles.sidebarSection, flex: 1, overflow: 'auto' }}>
