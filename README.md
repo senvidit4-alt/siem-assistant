@@ -3,8 +3,6 @@
 > An NLP-powered SIEM interface that lets SOC analysts investigate 
 > security threats in plain English — no query syntax required.
 
-## Demo
-[Add your LinkedIn video link here]
 
 ## Architecture
 - **Phase 1**: Real attack execution (XSS/IDOR via Burp Suite on OWASP Juice Shop)
