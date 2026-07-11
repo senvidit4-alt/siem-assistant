@@ -35,19 +35,19 @@
 
 ## Setup
 ```bash
-# Clone karo
+# start clowning
 git clone https://github.com/senvidit4-alt/siem-assistant
 
-# Docker start karo
+# Docker start 
 cd siem-assistant
 sudo docker-compose up -d
 sudo docker start elasticsearch
 
-# Backend start karo
+# Backend start k
 source venv/bin/activate
 uvicorn api.main:app --host 0.0.0.0 --port 8000
 
-# Frontend start karo
+# Frontend start k
 cd frontend
 npm start
 ```
