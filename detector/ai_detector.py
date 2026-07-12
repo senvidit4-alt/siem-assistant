@@ -1,0 +1,145 @@
+import re
+import math
+import time
+from datetime import datetime
+from collections import defaultdict
+from elasticsearch import Elasticsearch
+
+es = Elasticsearch("http://localhost:9200")
+LOG_FILE = "/home/kali/siem-assistant/logs/access.log"
+
+def calculate_entropy(text):
+    if not text:
+        return 0
+    freq = defaultdict(int)
+    for c in text:
+        freq[c] += 1
+    length = len(text)
+    entropy = -sum(
+        (count/length) * math.log2(count/length)
+        for count in freq.values()
+    )
+    return entropy
+
+OBFUSCATION_PATTERNS = [
+    r"%[0-9a-fA-F]{2}%[0-9a-fA-F]{2}%[0-9a-fA-F]{2}",
+    r"&#x[0-9a-fA-F]+;",
+    r"\\u[0-9a-fA-F]{4}",
+    r"(%3C|%3E|%22|%27){3,}",
+]
+
+XSS_PATTERNS = [
+    r"<script", r"<iframe", r"javascript:",
+    r"onerror=", r"onload=", r"alert\(",
+    r"%3Cscript", r"%3Ciframe",
+]
+
+idor_tracker = defaultdict(list)
+IDOR_THRESHOLD = 3
+
+def parse_log_line(line):
+    pattern = r'(\S+) - - \[([^\]]+)\] "(\S+) (\S+) ([^"]+)" (\d+) (\d+)'
+    match = re.match(pattern, line)
+    if match:
+        return {
+            "source_ip": match.group(1),
+            "timestamp": match.group(2),
+            "method": match.group(3),
+            "url": match.group(4),
+            "status": int(match.group(6)),
+            "bytes": int(match.group(7))
+        }
+    return None
+
+def detect_ai_mutated(parsed):
+    url = parsed["url"]
+    entropy = calculate_entropy(url)
+    high_entropy = entropy > 4.5
+    obfuscation_found = any(re.search(p, url, re.IGNORECASE) for p in OBFUSCATION_PATTERNS)
+    has_xss = any(re.search(p, url, re.IGNORECASE) for p in XSS_PATTERNS)
+    if (high_entropy and has_xss) or obfuscation_found:
+        return True, {"entropy": round(entropy, 2), "obfuscation_found": obfuscation_found}
+    return False, None
+
+def detect_xss(parsed):
+    url = parsed["url"].lower()
+    for pattern in XSS_PATTERNS:
+        if re.search(pattern, url, re.IGNORECASE):
+            return True, pattern
+    return False, None
+
+def detect_idor(parsed):
+    url = parsed["url"]
+    ip = parsed["source_ip"]
+    match = re.search(r"/api/Users/(\d+)", url, re.IGNORECASE)
+    if match:
+        user_id = int(match.group(1))
+        idor_tracker[ip].append(user_id)
+        recent = idor_tracker[ip][-10:]
+        if len(recent) >= IDOR_THRESHOLD:
+            sorted_recent = sorted(recent[-IDOR_THRESHOLD:])
+            is_sequential = all(
+                sorted_recent[i] + 1 == sorted_recent[i+1]
+                for i in range(len(sorted_recent)-1)
+            )
+            if is_sequential:
+                return True, recent
+    return False, None
+
+def create_alert(alert_type, parsed, extra_info=None, description=None):
+    alert = {
+        "@timestamp": datetime.utcnow().isoformat(),
+        "rule": {
+            "type": alert_type,
+            "group": alert_type.lower(),
+            "id": "100500" if alert_type == "AI_MUTATED_XSS" else "100100"
+        },
+        "source_ip": parsed["source_ip"],
+        "url": parsed["url"],
+        "method": parsed["method"],
+        "status_code": parsed["status"],
+        "description": description or f"{alert_type} detected",
+        "extra_info": str(extra_info) if extra_info else ""
+    }
+    result = es.index(index="siem-alerts", document=alert)
+    print(f"[ALERT] {alert_type} from {parsed['source_ip']}")
+    print(f"        URL: {parsed['url'][:80]}")
+    print(f"        ID: {result['_id']}")
+
+def watch_log():
+    print("[*] AI-Enhanced SIEM Detector starting...")
+    print(f"[*] Watching: {LOG_FILE}")
+    print("[*] Detecting: XSS, IDOR, AI_MUTATED_XSS")
+    print("-" * 60)
+
+    with open(LOG_FILE, "r") as f:
+        f.seek(0, 2)
+        while True:
+            line = f.readline()
+            if not line:
+                time.sleep(0.5)
+                continue
+            line = line.strip()
+            if not line:
+                continue
+            parsed = parse_log_line(line)
+            if not parsed:
+                continue
+
+            is_ai, ai_info = detect_ai_mutated(parsed)
+            if is_ai:
+                create_alert("AI_MUTATED_XSS", parsed, ai_info,
+                    f"Suspected AI-Mutated payload. Entropy: {ai_info['entropy']}")
+                continue
+
+            is_xss, pattern = detect_xss(parsed)
+            if is_xss:
+                create_alert("XSS", parsed, pattern, f"XSS pattern: {pattern}")
+                continue
+
+            is_idor, ids = detect_idor(parsed)
+            if is_idor:
+                create_alert("IDOR", parsed, ids, f"Sequential IDOR: {ids}")
+
+if __name__ == "__main__":
+    watch_log()

@@ -1,0 +1,206 @@
+{
+  "timestamp": "2026-07-12T21:28:51.529405",
+  "model_used": "llama3.2:3b",
+  "xss": {
+    "base_payload": "<script>alert(1)</script>",
+    "total": 5,
+    "bypassed": 5,
+    "results": [
+      {
+        "type": "XSS",
+        "payload_id": 1,
+        "payload": "&#60;script&gt;alert(1)&#60;</script>",
+        "status_code": 200,
+        "timestamp": "2026-07-12T21:27:14.202967",
+        "url": "http://localhost/rest/products/search?q=&#60;script&gt;alert(1)&#60;</script>",
+        "potentially_bypassed": true
+      },
+      {
+        "type": "XSS",
+        "payload_id": 2,
+        "payload": "%3Cscript%3Ealert(1)%3C/script>",
+        "status_code": 200,
+        "timestamp": "2026-07-12T21:27:15.081002",
+        "url": "http://localhost/rest/products/search?q=%3Cscript%3Ealert(1)%3C/script>",
+        "potentially_bypassed": true
+      },
+      {
+        "type": "XSS",
+        "payload_id": 3,
+        "payload": "ScRiPt",
+        "status_code": 200,
+        "timestamp": "2026-07-12T21:27:15.693766",
+        "url": "http://localhost/rest/products/search?q=ScRiPt",
+        "potentially_bypassed": true
+      },
+      {
+        "type": "XSS",
+        "payload_id": 4,
+        "payload": "<script>alert(1)</script>",
+        "status_code": 200,
+        "timestamp": "2026-07-12T21:27:16.216110",
+        "url": "http://localhost/rest/products/search?q=<script>alert(1)</script>",
+        "potentially_bypassed": true
+      },
+      {
+        "type": "XSS",
+        "payload_id": 5,
+        "payload": "<script>alert(1)</script>",
+        "status_code": 200,
+        "timestamp": "2026-07-12T21:27:16.772760",
+        "url": "http://localhost/rest/products/search?q=<script>alert(1)</script>",
+        "potentially_bypassed": true
+      }
+    ]
+  },
+  "idor": {
+    "total": 16,
+    "data_exposed": 0,
+    "results": [
+      {
+        "type": "AI_IDOR",
+        "endpoint": "/api/Users",
+        "user_id": 3,
+        "status_code": 401,
+        "timestamp": "2026-07-12T21:28:34.737283",
+        "url": "http://localhost/api/Users/3",
+        "data_exposed": false
+      },
+      {
+        "type": "AI_IDOR",
+        "endpoint": "/api/Users",
+        "user_id": 7,
+        "status_code": 401,
+        "timestamp": "2026-07-12T21:28:35.557566",
+        "url": "http://localhost/api/Users/7",
+        "data_exposed": false
+      },
+      {
+        "type": "AI_IDOR",
+        "endpoint": "/api/Users",
+        "user_id": 1,
+        "status_code": 401,
+        "timestamp": "2026-07-12T21:28:36.629093",
+        "url": "http://localhost/api/Users/1",
+        "data_exposed": false
+      },
+      {
+        "type": "AI_IDOR",
+        "endpoint": "/api/Users",
+        "user_id": 12,
+        "status_code": 401,
+        "timestamp": "2026-07-12T21:28:37.291078",
+        "url": "http://localhost/api/Users/12",
+        "data_exposed": false
+      },
+      {
+        "type": "AI_IDOR",
+        "endpoint": "/api/Users",
+        "user_id": 5,
+        "status_code": 401,
+        "timestamp": "2026-07-12T21:28:38.627877",
+        "url": "http://localhost/api/Users/5",
+        "data_exposed": false
+      },
+      {
+        "type": "AI_IDOR",
+        "endpoint": "/api/Users",
+        "user_id": 2,
+        "status_code": 401,
+        "timestamp": "2026-07-12T21:28:39.979083",
+        "url": "http://localhost/api/Users/2",
+        "data_exposed": false
+      },
+      {
+        "type": "AI_IDOR",
+        "endpoint": "/api/Users",
+        "user_id": 9,
+        "status_code": 401,
+        "timestamp": "2026-07-12T21:28:41.718132",
+        "url": "http://localhost/api/Users/9",
+        "data_exposed": false
+      },
+      {
+        "type": "AI_IDOR",
+        "endpoint": "/api/Users",
+        "user_id": 4,
+        "status_code": 401,
+        "timestamp": "2026-07-12T21:28:42.875724",
+        "url": "http://localhost/api/Users/4",
+        "data_exposed": false
+      },
+      {
+        "type": "AI_IDOR",
+        "endpoint": "/api/Orders",
+        "user_id": 3,
+        "status_code": 500,
+        "timestamp": "2026-07-12T21:28:44.252920",
+        "url": "http://localhost/api/Orders/3",
+        "data_exposed": false
+      },
+      {
+        "type": "AI_IDOR",
+        "endpoint": "/api/Orders",
+        "user_id": 7,
+        "status_code": 500,
+        "timestamp": "2026-07-12T21:28:44.787371",
+        "url": "http://localhost/api/Orders/7",
+        "data_exposed": false
+      },
+      {
+        "type": "AI_IDOR",
+        "endpoint": "/api/Orders",
+        "user_id": 1,
+        "status_code": 500,
+        "timestamp": "2026-07-12T21:28:46.208680",
+        "url": "http://localhost/api/Orders/1",
+        "data_exposed": false
+      },
+      {
+        "type": "AI_IDOR",
+        "endpoint": "/api/Orders",
+        "user_id": 12,
+        "status_code": 500,
+        "timestamp": "2026-07-12T21:28:47.123193",
+        "url": "http://localhost/api/Orders/12",
+        "data_exposed": false
+      },
+      {
+        "type": "AI_IDOR",
+        "endpoint": "/api/Orders",
+        "user_id": 5,
+        "status_code": 500,
+        "timestamp": "2026-07-12T21:28:47.582289",
+        "url": "http://localhost/api/Orders/5",
+        "data_exposed": false
+      },
+      {
+        "type": "AI_IDOR",
+        "endpoint": "/api/Orders",
+        "user_id": 2,
+        "status_code": 500,
+        "timestamp": "2026-07-12T21:28:48.341842",
+        "url": "http://localhost/api/Orders/2",
+        "data_exposed": false
+      },
+      {
+        "type": "AI_IDOR",
+        "endpoint": "/api/Orders",
+        "user_id": 9,
+        "status_code": 500,
+        "timestamp": "2026-07-12T21:28:49.495142",
+        "url": "http://localhost/api/Orders/9",
+        "data_exposed": false
+      },
+      {
+        "type": "AI_IDOR",
+        "endpoint": "/api/Orders",
+        "user_id": 4,
+        "status_code": 500,
+        "timestamp": "2026-07-12T21:28:50.287652",
+        "url": "http://localhost/api/Orders/4",
+        "data_exposed": false
+      }
+    ]
+  }
+}
