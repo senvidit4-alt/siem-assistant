@@ -3011,5 +3011,146 @@
     "entities": {
       "SOURCE_IP": "10.0.0.5"
     }
+  },
+  {
+    "text": "Did any payloads bypass standard WAF today",
+    "intent": "advanced_threat_hunting",
+    "entities": {
+      "TIME_RANGE": "today"
+    }
+  },
+  {
+    "text": "Show me highly obfuscated payloads from 192.168.1.10",
+    "intent": "advanced_threat_hunting",
+    "entities": {
+      "SOURCE_IP": "192.168.1.10"
+    }
+  },
+  {
+    "text": "Find AI mutated attacks this week",
+    "intent": "advanced_threat_hunting",
+    "entities": {
+      "TIME_RANGE": "this week"
+    }
+  },
+  {
+    "text": "Any AI generated payloads detected today",
+    "intent": "advanced_threat_hunting",
+    "entities": {
+      "TIME_RANGE": "today"
+    }
+  },
+  {
+    "text": "Show obfuscated XSS attempts yesterday",
+    "intent": "advanced_threat_hunting",
+    "entities": {
+      "TIME_RANGE": "yesterday"
+    }
+  },
+  {
+    "text": "Did any encoded payloads slip through last night",
+    "intent": "advanced_threat_hunting",
+    "entities": {
+      "TIME_RANGE": "last night"
+    }
+  },
+  {
+    "text": "Find high entropy requests from 10.0.0.5",
+    "intent": "advanced_threat_hunting",
+    "entities": {
+      "SOURCE_IP": "10.0.0.5"
+    }
+  },
+  {
+    "text": "Show me WAF bypass attempts this month",
+    "intent": "advanced_threat_hunting",
+    "entities": {
+      "TIME_RANGE": "this month"
+    }
+  },
+  {
+    "text": "Any mutated payloads from external IP today",
+    "intent": "advanced_threat_hunting",
+    "entities": {
+      "TIME_RANGE": "today"
+    }
+  },
+  {
+    "text": "Detect obfuscated attacks in last 24 hours",
+    "intent": "advanced_threat_hunting",
+    "entities": {
+      "TIME_RANGE": "last 24 hours"
+    }
+  },
+  {
+    "text": "Show AI red team activity this week",
+    "intent": "advanced_threat_hunting",
+    "entities": {
+      "TIME_RANGE": "this week"
+    }
+  },
+  {
+    "text": "Any hex encoded XSS attempts yesterday",
+    "intent": "advanced_threat_hunting",
+    "entities": {
+      "TIME_RANGE": "yesterday"
+    }
+  },
+  {
+    "text": "Find unicode escaped payloads from 172.16.0.1",
+    "intent": "advanced_threat_hunting",
+    "entities": {
+      "SOURCE_IP": "172.16.0.1"
+    }
+  },
+  {
+    "text": "Show double encoded attacks today",
+    "intent": "advanced_threat_hunting",
+    "entities": {
+      "TIME_RANGE": "today"
+    }
+  },
+  {
+    "text": "Did AI fuzzer hit our system last night",
+    "intent": "advanced_threat_hunting",
+    "entities": {
+      "TIME_RANGE": "last night"
+    }
+  },
+  {
+    "text": "Find broken tag XSS bypass attempts this week",
+    "intent": "advanced_threat_hunting",
+    "entities": {
+      "TIME_RANGE": "this week"
+    }
+  },
+  {
+    "text": "Show high entropy URLs from 192.168.1.50 yesterday",
+    "intent": "advanced_threat_hunting",
+    "entities": {
+      "SOURCE_IP": "192.168.1.50",
+      "TIME_RANGE": "yesterday"
+    }
+  },
+  {
+    "text": "Any obfuscated payloads bypassed detection today",
+    "intent": "advanced_threat_hunting",
+    "entities": {
+      "TIME_RANGE": "today"
+    }
+  },
+  {
+    "text": "Find AI mutated XSS from last 24 hours",
+    "intent": "advanced_threat_hunting",
+    "entities": {
+      "TIME_RANGE": "last 24 hours"
+    }
+  },
+  {
+    "text": "Show suspected WAF bypass attempts this month",
+    "intent": "advanced_threat_hunting",
+    "entities": {
+      "TIME_RANGE": "this month"
+    }
   }
 ]

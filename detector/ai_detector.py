@@ -1,6 +1,7 @@
 import re
 import math
 import time
+import os
 from datetime import datetime
 from collections import defaultdict
 from elasticsearch import Elasticsearch
@@ -38,7 +39,8 @@ idor_tracker = defaultdict(list)
 IDOR_THRESHOLD = 3
 
 def parse_log_line(line):
-    pattern = r'(\S+) - - \[([^\]]+)\] "(\S+) (\S+) ([^"]+)" (\d+) (\d+)'
+    # Flexible pattern — bytes ke baad optional fields
+    pattern = r'(\S+) - - \[([^\]]+)\] "(\S+) (\S+)[^"]*" (\d+) (\d+)'
     match = re.match(pattern, line)
     if match:
         return {
@@ -46,15 +48,15 @@ def parse_log_line(line):
             "timestamp": match.group(2),
             "method": match.group(3),
             "url": match.group(4),
-            "status": int(match.group(6)),
-            "bytes": int(match.group(7))
+            "status": int(match.group(5)),
+            "bytes": int(match.group(6))
         }
     return None
 
 def detect_ai_mutated(parsed):
     url = parsed["url"]
     entropy = calculate_entropy(url)
-    high_entropy = entropy > 4.5
+    high_entropy = entropy > 3.8
     obfuscation_found = any(re.search(p, url, re.IGNORECASE) for p in OBFUSCATION_PATTERNS)
     has_xss = any(re.search(p, url, re.IGNORECASE) for p in XSS_PATTERNS)
     if (high_entropy and has_xss) or obfuscation_found:
@@ -71,11 +73,13 @@ def detect_xss(parsed):
 def detect_idor(parsed):
     url = parsed["url"]
     ip = parsed["source_ip"]
-    match = re.search(r"/api/Users/(\d+)", url, re.IGNORECASE)
+    match = re.search(r"/api/(Users|Orders|Feedback)/(\d+)", url, re.IGNORECASE)
     if match:
-        user_id = int(match.group(1))
-        idor_tracker[ip].append(user_id)
-        recent = idor_tracker[ip][-10:]
+        endpoint = match.group(1)
+        user_id = int(match.group(2))
+        key = f"{ip}_{endpoint}"
+        idor_tracker[key].append(user_id)
+        recent = idor_tracker[key][-10:]
         if len(recent) >= IDOR_THRESHOLD:
             sorted_recent = sorted(recent[-IDOR_THRESHOLD:])
             is_sequential = all(
@@ -83,7 +87,9 @@ def detect_idor(parsed):
                 for i in range(len(sorted_recent)-1)
             )
             if is_sequential:
-                return True, recent
+                return True, {"type": "sequential", "ids": recent}
+        if len(recent) >= 5:
+            return True, {"type": "high_frequency", "ids": recent, "endpoint": endpoint}
     return False, None
 
 def create_alert(alert_type, parsed, extra_info=None, description=None):
@@ -110,36 +116,47 @@ def watch_log():
     print("[*] AI-Enhanced SIEM Detector starting...")
     print(f"[*] Watching: {LOG_FILE}")
     print("[*] Detecting: XSS, IDOR, AI_MUTATED_XSS")
+    print("[*] Waiting for new logs...")
     print("-" * 60)
 
+    current_size = os.path.getsize(LOG_FILE)
+
     with open(LOG_FILE, "r") as f:
-        f.seek(0, 2)
+        f.seek(current_size)
+
         while True:
-            line = f.readline()
-            if not line:
-                time.sleep(0.5)
-                continue
-            line = line.strip()
-            if not line:
-                continue
-            parsed = parse_log_line(line)
-            if not parsed:
-                continue
+            new_size = os.path.getsize(LOG_FILE)
 
-            is_ai, ai_info = detect_ai_mutated(parsed)
-            if is_ai:
-                create_alert("AI_MUTATED_XSS", parsed, ai_info,
-                    f"Suspected AI-Mutated payload. Entropy: {ai_info['entropy']}")
-                continue
+            if new_size > current_size:
+                lines = f.readlines()
+                current_size = new_size
 
-            is_xss, pattern = detect_xss(parsed)
-            if is_xss:
-                create_alert("XSS", parsed, pattern, f"XSS pattern: {pattern}")
-                continue
+                for line in lines:
+                    line = line.strip()
+                    if not line:
+                        continue
 
-            is_idor, ids = detect_idor(parsed)
-            if is_idor:
-                create_alert("IDOR", parsed, ids, f"Sequential IDOR: {ids}")
+                    parsed = parse_log_line(line)
+                    if not parsed:
+                        print(f"[!] Parse failed: {line[:80]}")
+                        continue
+
+                    is_ai, ai_info = detect_ai_mutated(parsed)
+                    if is_ai:
+                        create_alert("AI_MUTATED_XSS", parsed, ai_info,
+                            f"Suspected AI-Mutated payload. Entropy: {ai_info['entropy']}")
+                        continue
+
+                    is_xss, pattern = detect_xss(parsed)
+                    if is_xss:
+                        create_alert("XSS", parsed, pattern, f"XSS pattern: {pattern}")
+                        continue
+
+                    is_idor, ids = detect_idor(parsed)
+                    if is_idor:
+                        create_alert("IDOR", parsed, ids, f"Sequential IDOR: {ids}")
+
+            time.sleep(0.3)
 
 if __name__ == "__main__":
     watch_log()

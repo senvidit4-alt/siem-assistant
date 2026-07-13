@@ -4,7 +4,7 @@ from pydantic import BaseModel
 import pickle
 import sys
 import re
-from typing import Dict, Any, Optional
+from typing import Dict, Any
 from datetime import datetime
 
 sys.path.append("/home/kali/siem-assistant/nlp")
@@ -22,7 +22,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-print("[*] Loading NLP models (DistilBERT & Classifier)...")
+print("[*] Loading NLP models...")
 try:
     sentence_model = SentenceTransformer("/home/kali/siem-assistant/nlp/sentence_transformer_model")
     with open("/home/kali/siem-assistant/nlp/intent_classifier.pkl", "rb") as f:
@@ -70,7 +70,8 @@ def extract_entities(text: str) -> dict:
         r"\bddos\b": "DDoS",
         r"\brce\b": "RCE",
         r"\bcsrf\b": "CSRF",
-        r"phishing": "Phishing"
+        r"phishing": "Phishing",
+        r"ai.mutated|obfuscat|bypass|entropy|waf": "AI_MUTATED_XSS"
     }
     for pattern, val in attack_map.items():
         if re.search(pattern, text_lower):
@@ -121,7 +122,14 @@ def process_query(request: QueryRequest):
         entities = extract_entities(request.text)
         merged_entities = context_manager.get_merged_entities(request.session_id, entities)
 
-        if confidence < 0.45 or intent == "clarify_needed":
+        # Advanced threat hunting — AI mutated payloads
+        if intent == "advanced_threat_hunting":
+            merged_entities["ATTACK_TYPE"] = "AI_MUTATED_XSS"
+            intent = "web_attack_analysis"
+            confidence = 0.90
+
+        # Clarification threshold
+        if confidence < 0.30 or intent == "clarify_needed":
             return {
                 "intent": intent,
                 "confidence": round(confidence, 2),
