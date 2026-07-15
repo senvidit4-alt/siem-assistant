@@ -897,3 +897,7 @@
 172.18.0.1 - - [13/Jul/2026:04:41:02 +0000] "GET /api/Orders/18 HTTP/1.1" 500 765 "-" "python-requests/2.34.2"
 172.18.0.1 - - [13/Jul/2026:04:41:02 +0000] "GET /api/Orders/9 HTTP/1.1" 500 766 "-" "python-requests/2.34.2"
 172.18.0.1 - - [13/Jul/2026:04:41:03 +0000] "GET /api/Orders/15 HTTP/1.1" 500 761 "-" "python-requests/2.34.2"
+172.18.0.1 - - [13/Jul/2026:04:41:04 +0000] "GET /api/Orders/10 HTTP/1.1" 500 766 "-" "python-requests/2.34.2"
+172.18.0.1 - - [13/Jul/2026:04:41:07 +0000] "GET /api/Orders/6 HTTP/1.1" 500 766 "-" "python-requests/2.34.2"
+172.18.0.1 - - [13/Jul/2026:04:41:08 +0000] "GET /api/Orders/19 HTTP/1.1" 500 766 "-" "python-requests/2.34.2"
+172.18.0.1 - - [13/Jul/2026:04:41:09 +0000] "GET /api/Orders/8 HTTP/1.1" 500 766 "-" "python-requests/2.34.2"
