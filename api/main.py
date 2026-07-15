@@ -12,6 +12,7 @@ sys.path.append("/home/kali/siem-assistant/nlp")
 from sentence_transformers import SentenceTransformer
 from query_generator import generate_query
 from siem_connector import fetch_alerts, format_results, generate_explanation
+from intent_resolver import resolve_intent_with_llm
 
 app = FastAPI(title="Advanced SIEM Assistant API")
 
@@ -63,15 +64,18 @@ def extract_entities(text: str) -> dict:
     text_lower = text.lower()
 
     attack_map = {
-        r"\bxss\b": "XSS", r"cross site": "XSS",
-        r"\bidor\b": "IDOR", r"insecure direct": "IDOR",
-        r"\bsqli\b": "SQLi", r"sql injection": "SQLi",
+        r"\bxss\b": "XSS",
+        r"cross site": "XSS",
+        r"\bidor\b": "IDOR",
+        r"insecure direct": "IDOR",
+        r"\bsqli\b": "SQLi",
+        r"sql injection": "SQLi",
         r"brute force": "Brute Force",
         r"\bddos\b": "DDoS",
         r"\brce\b": "RCE",
         r"\bcsrf\b": "CSRF",
         r"phishing": "Phishing",
-        r"ai.mutated|obfuscat|bypass|entropy|waf": "AI_MUTATED_XSS"
+        r"ai.mutated|obfuscat|bypass|entropy|waf|evasion|fuzzer": "AI_MUTATED_XSS"
     }
     for pattern, val in attack_map.items():
         if re.search(pattern, text_lower):
@@ -79,11 +83,16 @@ def extract_entities(text: str) -> dict:
             break
 
     time_map = {
-        r"today": "today", r"yesterday": "yesterday",
-        r"last hour": "last hour", r"last 24 hours": "last 24 hours",
-        r"this week": "this week", r"last week": "last week",
-        r"this month": "this month", r"last month": "last month",
-        r"last night": "last night", r"past 15 minutes": "past 15 minutes"
+        r"today": "today",
+        r"yesterday": "yesterday",
+        r"last hour": "last hour",
+        r"last 24 hours": "last 24 hours",
+        r"this week": "this week",
+        r"last week": "last week",
+        r"this month": "this month",
+        r"last month": "last month",
+        r"last night": "last night",
+        r"past 15 minutes": "past 15 minutes"
     }
     for pattern, val in time_map.items():
         if re.search(pattern, text_lower):
@@ -115,28 +124,37 @@ def root():
 @app.post("/query")
 def process_query(request: QueryRequest):
     try:
+        # Step 1: Intent classify karo
         embedding = sentence_model.encode([request.text])
         intent = intent_classifier.predict(embedding)[0]
         confidence = float(intent_classifier.predict_proba(embedding).max())
 
+        # Step 2: Agar confidence kam hai — Ollama se resolve karo
+        if confidence < 0.45 or intent == "clarify_needed":
+            print(f"[*] Low confidence ({confidence:.2f}), asking Ollama...")
+            intent, confidence = resolve_intent_with_llm(request.text)
+            print(f"[*] Ollama resolved: {intent} ({confidence:.2f})")
+
+        # Step 3: Agar abhi bhi clarify needed
+        if intent == "clarify_needed" or confidence < 0.30:
+            return {
+                "intent": intent,
+                "confidence": round(confidence, 2),
+                "type": "clarification",
+                "explanation": "I'm not completely sure what you need. Could you rephrase? (e.g., 'Show me XSS attempts today' or 'Did any AI attacks bypass WAF today?')"
+            }
+
+        # Step 4: Entity extraction
         entities = extract_entities(request.text)
         merged_entities = context_manager.get_merged_entities(request.session_id, entities)
 
-        # Advanced threat hunting — AI mutated payloads
+        # Step 5: Advanced threat hunting handling
         if intent == "advanced_threat_hunting":
             merged_entities["ATTACK_TYPE"] = "AI_MUTATED_XSS"
             intent = "web_attack_analysis"
             confidence = 0.90
 
-        # Clarification threshold
-        if confidence < 0.30 or intent == "clarify_needed":
-            return {
-                "intent": intent,
-                "confidence": round(confidence, 2),
-                "type": "clarification",
-                "explanation": "I'm not completely sure what you need. Could you rephrase? (e.g., 'Show me XSS attempts today' or 'Filter by IP 192.168.1.10')"
-            }
-
+        # Step 6: Filter without base search check
         if intent == "filter_followup" and not merged_entities.get("TIME_RANGE"):
             return {
                 "intent": intent,
@@ -145,8 +163,10 @@ def process_query(request: QueryRequest):
                 "explanation": "You asked to filter, but I don't know what we are filtering. Please start with a base search like 'Show me all alerts today'."
             }
 
+        # Step 7: Query generate karo
         query = generate_query(intent, merged_entities)
 
+        # Step 8: Elasticsearch fetch karo
         try:
             response = fetch_alerts(query)
             result = format_results(response, intent)
@@ -155,6 +175,7 @@ def process_query(request: QueryRequest):
             result = {"error": "Failed to connect to SIEM/Elasticsearch backend."}
             explanation = str(e)
 
+        # Step 9: Context update karo
         context_manager.update_context(request.session_id, intent, entities)
 
         return {

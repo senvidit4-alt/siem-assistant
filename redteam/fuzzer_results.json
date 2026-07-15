@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-07-13T04:41:10.052456",
+  "timestamp": "2026-07-15T06:31:28.552902",
   "model_used": "llama3.2:3b",
   "xss": {
     "base_payload": "<script>alert(1)</script>",
@@ -9,46 +9,46 @@
       {
         "type": "XSS",
         "payload_id": 1,
-        "payload": "&#60;script&#62;alert(1)&#60;/script>",
+        "payload": "&#60;script&gt;alert(1)&#62;",
         "status_code": 200,
-        "timestamp": "2026-07-13T04:36:02.573700",
-        "url": "http://localhost/rest/products/search?q=&#60;script&#62;alert(1)&#60;/script>",
+        "timestamp": "2026-07-15T06:29:36.188270",
+        "url": "http://localhost/rest/products/search?q=&#60;script&gt;alert(1)&#62;",
         "potentially_bypassed": true
       },
       {
         "type": "XSS",
         "payload_id": 2,
-        "payload": "%3Cscript%3Ealert(1)%3C/script>",
+        "payload": "%3Cscript%3Ealert(1)%3C/%script%3E",
         "status_code": 200,
-        "timestamp": "2026-07-13T04:36:03.299868",
-        "url": "http://localhost/rest/products/search?q=%3Cscript%3Ealert(1)%3C/script>",
+        "timestamp": "2026-07-15T06:29:38.580420",
+        "url": "http://localhost/rest/products/search?q=%3Cscript%3Ealert(1)%3C/%script%3E",
         "potentially_bypassed": true
       },
       {
         "type": "XSS",
         "payload_id": 3,
-        "payload": "ScRiPt>alert(1)/ScRiPt",
+        "payload": "ScRiPt>alert(1)",
         "status_code": 200,
-        "timestamp": "2026-07-13T04:36:03.923451",
-        "url": "http://localhost/rest/products/search?q=ScRiPt>alert(1)/ScRiPt",
+        "timestamp": "2026-07-15T06:29:39.385256",
+        "url": "http://localhost/rest/products/search?q=ScRiPt>alert(1)",
         "potentially_bypassed": true
       },
       {
         "type": "XSS",
         "payload_id": 4,
-        "payload": "<script>alert(1)</script>",
+        "payload": "<script>alert(1)>",
         "status_code": 200,
-        "timestamp": "2026-07-13T04:36:04.877557",
-        "url": "http://localhost/rest/products/search?q=<script>alert(1)</script>",
+        "timestamp": "2026-07-15T06:29:39.962294",
+        "url": "http://localhost/rest/products/search?q=<script>alert(1)>",
         "potentially_bypassed": true
       },
       {
         "type": "XSS",
         "payload_id": 5,
-        "payload": "<b>script</b>alert(1)</b>",
+        "payload": "<script></script>alert(1)",
         "status_code": 200,
-        "timestamp": "2026-07-13T04:36:05.552611",
-        "url": "http://localhost/rest/products/search?q=<b>script</b>alert(1)</b>",
+        "timestamp": "2026-07-15T06:29:40.495312",
+        "url": "http://localhost/rest/products/search?q=<script></script>alert(1)",
         "potentially_bypassed": true
       }
     ]
@@ -60,10 +60,10 @@
       {
         "type": "AI_IDOR",
         "endpoint": "/api/Users",
-        "user_id": 12,
+        "user_id": 14,
         "status_code": 401,
-        "timestamp": "2026-07-13T04:40:53.293867",
-        "url": "http://localhost/api/Users/12",
+        "timestamp": "2026-07-15T06:31:10.508567",
+        "url": "http://localhost/api/Users/14",
         "data_exposed": false
       },
       {
@@ -71,7 +71,7 @@
         "endpoint": "/api/Users",
         "user_id": 18,
         "status_code": 401,
-        "timestamp": "2026-07-13T04:40:54.210553",
+        "timestamp": "2026-07-15T06:31:11.772385",
         "url": "http://localhost/api/Users/18",
         "data_exposed": false
       },
@@ -80,17 +80,44 @@
         "endpoint": "/api/Users",
         "user_id": 9,
         "status_code": 401,
-        "timestamp": "2026-07-13T04:40:55.357738",
+        "timestamp": "2026-07-15T06:31:12.712450",
         "url": "http://localhost/api/Users/9",
         "data_exposed": false
       },
       {
         "type": "AI_IDOR",
         "endpoint": "/api/Users",
-        "user_id": 15,
+        "user_id": 11,
         "status_code": 401,
-        "timestamp": "2026-07-13T04:40:56.077039",
-        "url": "http://localhost/api/Users/15",
+        "timestamp": "2026-07-15T06:31:13.920067",
+        "url": "http://localhost/api/Users/11",
+        "data_exposed": false
+      },
+      {
+        "type": "AI_IDOR",
+        "endpoint": "/api/Users",
+        "user_id": 7,
+        "status_code": 401,
+        "timestamp": "2026-07-15T06:31:14.582783",
+        "url": "http://localhost/api/Users/7",
+        "data_exposed": false
+      },
+      {
+        "type": "AI_IDOR",
+        "endpoint": "/api/Users",
+        "user_id": 16,
+        "status_code": 401,
+        "timestamp": "2026-07-15T06:31:15.918839",
+        "url": "http://localhost/api/Users/16",
+        "data_exposed": false
+      },
+      {
+        "type": "AI_IDOR",
+        "endpoint": "/api/Users",
+        "user_id": 4,
+        "status_code": 401,
+        "timestamp": "2026-07-15T06:31:17.215220",
+        "url": "http://localhost/api/Users/4",
         "data_exposed": false
       },
       {
@@ -98,44 +125,17 @@
         "endpoint": "/api/Users",
         "user_id": 10,
         "status_code": 401,
-        "timestamp": "2026-07-13T04:40:56.467962",
+        "timestamp": "2026-07-15T06:31:18.409439",
         "url": "http://localhost/api/Users/10",
         "data_exposed": false
       },
       {
         "type": "AI_IDOR",
-        "endpoint": "/api/Users",
-        "user_id": 6,
-        "status_code": 401,
-        "timestamp": "2026-07-13T04:40:57.426244",
-        "url": "http://localhost/api/Users/6",
-        "data_exposed": false
-      },
-      {
-        "type": "AI_IDOR",
-        "endpoint": "/api/Users",
-        "user_id": 19,
-        "status_code": 401,
-        "timestamp": "2026-07-13T04:40:58.252026",
-        "url": "http://localhost/api/Users/19",
-        "data_exposed": false
-      },
-      {
-        "type": "AI_IDOR",
-        "endpoint": "/api/Users",
-        "user_id": 8,
-        "status_code": 401,
-        "timestamp": "2026-07-13T04:40:59.348208",
-        "url": "http://localhost/api/Users/8",
-        "data_exposed": false
-      },
-      {
-        "type": "AI_IDOR",
         "endpoint": "/api/Orders",
-        "user_id": 12,
+        "user_id": 14,
         "status_code": 500,
-        "timestamp": "2026-07-13T04:41:00.449072",
-        "url": "http://localhost/api/Orders/12",
+        "timestamp": "2026-07-15T06:31:19.248978",
+        "url": "http://localhost/api/Orders/14",
         "data_exposed": false
       },
       {
@@ -143,7 +143,7 @@
         "endpoint": "/api/Orders",
         "user_id": 18,
         "status_code": 500,
-        "timestamp": "2026-07-13T04:41:02.099291",
+        "timestamp": "2026-07-15T06:31:20.527799",
         "url": "http://localhost/api/Orders/18",
         "data_exposed": false
       },
@@ -152,17 +152,44 @@
         "endpoint": "/api/Orders",
         "user_id": 9,
         "status_code": 500,
-        "timestamp": "2026-07-13T04:41:02.467913",
+        "timestamp": "2026-07-15T06:31:21.650265",
         "url": "http://localhost/api/Orders/9",
         "data_exposed": false
       },
       {
         "type": "AI_IDOR",
         "endpoint": "/api/Orders",
-        "user_id": 15,
+        "user_id": 11,
         "status_code": 500,
-        "timestamp": "2026-07-13T04:41:03.615363",
-        "url": "http://localhost/api/Orders/15",
+        "timestamp": "2026-07-15T06:31:22.975165",
+        "url": "http://localhost/api/Orders/11",
+        "data_exposed": false
+      },
+      {
+        "type": "AI_IDOR",
+        "endpoint": "/api/Orders",
+        "user_id": 7,
+        "status_code": 500,
+        "timestamp": "2026-07-15T06:31:24.419511",
+        "url": "http://localhost/api/Orders/7",
+        "data_exposed": false
+      },
+      {
+        "type": "AI_IDOR",
+        "endpoint": "/api/Orders",
+        "user_id": 16,
+        "status_code": 500,
+        "timestamp": "2026-07-15T06:31:25.604303",
+        "url": "http://localhost/api/Orders/16",
+        "data_exposed": false
+      },
+      {
+        "type": "AI_IDOR",
+        "endpoint": "/api/Orders",
+        "user_id": 4,
+        "status_code": 500,
+        "timestamp": "2026-07-15T06:31:25.986324",
+        "url": "http://localhost/api/Orders/4",
         "data_exposed": false
       },
       {
@@ -170,35 +197,8 @@
         "endpoint": "/api/Orders",
         "user_id": 10,
         "status_code": 500,
-        "timestamp": "2026-07-13T04:41:04.590250",
+        "timestamp": "2026-07-15T06:31:27.334443",
         "url": "http://localhost/api/Orders/10",
-        "data_exposed": false
-      },
-      {
-        "type": "AI_IDOR",
-        "endpoint": "/api/Orders",
-        "user_id": 6,
-        "status_code": 500,
-        "timestamp": "2026-07-13T04:41:07.172922",
-        "url": "http://localhost/api/Orders/6",
-        "data_exposed": false
-      },
-      {
-        "type": "AI_IDOR",
-        "endpoint": "/api/Orders",
-        "user_id": 19,
-        "status_code": 500,
-        "timestamp": "2026-07-13T04:41:08.122564",
-        "url": "http://localhost/api/Orders/19",
-        "data_exposed": false
-      },
-      {
-        "type": "AI_IDOR",
-        "endpoint": "/api/Orders",
-        "user_id": 8,
-        "status_code": 500,
-        "timestamp": "2026-07-13T04:41:09.260594",
-        "url": "http://localhost/api/Orders/8",
         "data_exposed": false
       }
     ]
