@@ -1,113 +1,136 @@
-import requests
-import json
+import re
+import difflib
 
-OLLAMA_URL = "http://localhost:11434/api/generate"
-MODEL = "llama3.2:3b"
+# Known security terms dictionary
+SECURITY_TERMS = [
+    "xss", "idor", "sqli", "sql injection", "brute force", "csrf", "rce", "ddos", "phishing",
+    "attack", "attacks", "bypass", "waf", "evasion", "obfuscated", "mutated", "fuzzer",
+    "report", "summary", "chart", "filter", "show", "give", "list", "display",
+    "today", "yesterday", "week", "month", "hour", "night",
+    "how many", "count", "total", "any", "all", "recent",
+    "investigate", "trace", "activity", "incident",
+    "malware", "login", "authentication", "alert", "alerts", "logs",
+]
 
-# Fast keyword fallback — Ollama se pehle check hoga
-KEYWORD_INTENT_MAP = {
-    "advanced_threat_hunting": [
-        "waf", "bypass", "evad", "obfuscat", "mutated", "fuzzer",
-        "entropy", "encoded attack", "passed the", "got through",
-        "slipped through", "got past", "ai attack", "llm", "evasion",
-        "double encod", "hex encod", "unicode escap", "filter bypass",
-        "passed waf", "bypassed", "got past", "snuck through"
-    ],
-    "web_attack_analysis": [
-        "xss", "idor", "sqli", "sql injection", "cross site",
-        "script inject", "object reference", "injection attack"
-    ],
-    "generate_report": [
-        "report", "summary", "chart", "graph", "overview",
-        "compile", "generate", "weekly", "monthly"
-    ],
-    "count_aggregate": [
-        "how many", "count", "total", "number of", "how much"
-    ],
-    "search_logs": [
-        "failed login", "authentication", "suspicious login",
-        "brute force", "malware", "show logs", "show alerts"
-    ],
-    "incident_investigation": [
-        "trace", "investigate", "activity from", "what did", "track"
-    ]
-}
-
-def keyword_fallback(text: str):
-    """Fast keyword-based intent detection — no LLM needed"""
+def normalize_query(text: str) -> str:
+    """
+    2-step normalization:
+    1. Repeated chars compress (xxsss → xs, attaack → atack)
+    2. Word-level fuzzy match against known security terms
+    """
     text_lower = text.lower()
-    for intent, keywords in KEYWORD_INTENT_MAP.items():
-        for kw in keywords:
-            if kw in text_lower:
-                return intent, 0.85
-    return None, 0.0
 
-INTENT_DESCRIPTIONS = {
-    "web_attack_analysis": "searching for XSS, IDOR, SQLi, or any web attack alerts",
-    "search_logs": "searching security logs for events like failed logins",
-    "filter_followup": "filtering previous results by IP, severity, or criteria",
-    "generate_report": "generating a summary report or chart",
-    "count_aggregate": "counting total numbers of attacks or alerts",
-    "incident_investigation": "investigating a specific IP address or user activity",
-    "advanced_threat_hunting": "finding AI-generated attacks, WAF bypass, obfuscated payloads",
-    "clarify_needed": "query is too vague to understand"
+    # Step 1: Compress repeated chars
+    compressed = re.sub(r'(.)\1{2,}', r'\1\1', text_lower)
+
+    # Step 2: Word-level fuzzy correction
+    words = compressed.split()
+    corrected = []
+    for word in words:
+        # Skip short words and numbers
+        if len(word) <= 2 or word.isdigit():
+            corrected.append(word)
+            continue
+
+        # Find closest match
+        matches = difflib.get_close_matches(word, SECURITY_TERMS, n=1, cutoff=0.75)
+        if matches:
+            corrected.append(matches[0])
+        else:
+            corrected.append(word)
+
+    result = " ".join(corrected)
+    if result != text_lower:
+        print(f"[*] Normalized: '{text_lower}' → '{result}'")
+    return result
+
+KEYWORD_INTENT_MAP = [
+    ("advanced_threat_hunting", [
+        "waf", "bypass", "evasion", "obfuscated", "mutated", "fuzzer",
+        "entropy", "got through", "slipped through", "got past",
+        "ai attack", "filter bypass", "passed waf", "bypassed",
+        "ai generated", "encoded attack",
+    ]),
+    ("count_aggregate", [
+        "how many", "count", "total", "how much", "number of", "tally"
+    ]),
+    ("generate_report", [
+        "report", "summary", "chart", "graph", "overview",
+        "statistics", "stats", "breakdown", "trend", "compile"
+    ]),
+    ("filter_followup", [
+        "filter", "only show", "narrow down", "exclude",
+        "just show", "limit to", "refine", "from ip", "by ip",
+        "only from", "restrict"
+    ]),
+    ("incident_investigation", [
+        "trace", "investigate", "full activity", "drill down",
+        "all activity from", "what did", "track", "history"
+    ]),
+    ("web_attack_analysis", [
+        "xss", "idor", "sqli", "sql injection", "cross site",
+        "brute force", "rce", "csrf", "phishing", "ddos",
+        "attack", "attacks", "malicious", "payload", "injection",
+        "exploit", "vulnerability", "hack", "intrusion", "threat"
+    ]),
+    ("search_logs", [
+        "show all", "give me all", "list all", "all alerts",
+        "all events", "what happened", "show everything",
+        "any alerts", "recent", "show logs", "all logs",
+        "failed login", "authentication", "suspicious", "malware",
+        "show", "give", "display", "fetch", "get", "any", "all"
+    ]),
+]
+
+TIME_PATTERNS = {
+    "today": ["today", "aaj", "this day", "right now", "current"],
+    "yesterday": ["yesterday", "kal", "last day", "previous day"],
+    "this week": ["this week", "week", "7 days", "past week"],
+    "last week": ["last week", "previous week"],
+    "this month": ["this month", "month", "30 days"],
+    "last 24 hours": ["24 hours", "last 24", "past 24"],
+    "last hour": ["last hour", "past hour", "1 hour"],
+    "last night": ["last night", "overnight", "night"],
 }
+
+ATTACK_PATTERNS = {
+    "XSS": ["xss", "cross site", "script", "scripting"],
+    "IDOR": ["idor", "insecure direct", "object reference"],
+    "SQLi": ["sqli", "sql injection", "sql"],
+    "Brute Force": ["brute force", "brute", "password spray"],
+    "AI_MUTATED_XSS": ["waf bypass", "bypass", "obfuscated", "mutated", "fuzzer", "ai attack"],
+}
+
+def extract_time_from_text(text: str) -> str:
+    text_lower = text.lower()
+    for time_val, keywords in TIME_PATTERNS.items():
+        if any(kw in text_lower for kw in keywords):
+            return time_val
+    return "today"
+
+def extract_attack_from_text(text: str) -> str:
+    text_lower = text.lower()
+    for attack, keywords in ATTACK_PATTERNS.items():
+        if any(kw in text_lower for kw in keywords):
+            return attack
+    return ""
+
+def extract_ip_from_text(text: str) -> str:
+    match = re.search(r'\b(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})\b', text)
+    return match.group(1) if match else ""
 
 def resolve_intent_with_llm(user_query: str) -> tuple:
     """
-    Step 1: Fast keyword check
-    Step 2: Ollama fallback (agar keyword match nahi hua)
+    Step 1: Normalize query (typo fix via difflib)
+    Step 2: Keyword intent match
+    Step 3: Default fallback
     """
-    # Fast path — keyword check pehle
-    intent, confidence = keyword_fallback(user_query)
-    if intent:
-        print(f"[*] Keyword match: {intent} ({confidence})")
-        return intent, confidence
+    normalized = normalize_query(user_query)
 
-    # Slow path — Ollama
-    print(f"[*] No keyword match, trying Ollama...")
-    prompt = f"""Classify this security query into exactly one intent.
+    for intent, keywords in KEYWORD_INTENT_MAP:
+        if any(kw in normalized for kw in keywords):
+            print(f"[*] Intent: {intent} | Query: '{normalized}'")
+            return intent, 0.85
 
-Query: "{user_query}"
-
-Intents:
-- advanced_threat_hunting: WAF bypass, obfuscated payloads, AI attacks, evasion
-- web_attack_analysis: XSS, IDOR, SQLi, injection attacks
-- search_logs: failed logins, malware, suspicious activity
-- filter_followup: filter by IP, severity, narrow down results
-- generate_report: create summary, chart, report
-- count_aggregate: count total, how many
-- incident_investigation: trace activity, investigate IP
-- clarify_needed: unclear query
-
-Return ONLY this JSON, nothing else:
-{{"intent": "intent_name", "confidence": 0.85}}"""
-
-    try:
-        response = requests.post(
-            OLLAMA_URL,
-            json={
-                "model": MODEL,
-                "prompt": prompt,
-                "stream": False,
-                "options": {"temperature": 0.1, "num_predict": 50}
-            },
-            timeout=60
-        )
-
-        if response.status_code == 200:
-            text = response.json().get("response", "").strip()
-            start = text.find("{")
-            end = text.rfind("}") + 1
-            if start != -1 and end > start:
-                result = json.loads(text[start:end])
-                intent = result.get("intent", "clarify_needed")
-                confidence = float(result.get("confidence", 0.5))
-                if intent not in INTENT_DESCRIPTIONS:
-                    intent = "clarify_needed"
-                return intent, confidence
-
-    except Exception as e:
-        print(f"[!] Ollama failed: {e}")
-
-    return "clarify_needed", 0.3
+    print(f"[*] No match — default: search_logs")
+    return "search_logs", 0.65
